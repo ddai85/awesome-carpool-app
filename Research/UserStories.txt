@@ -1,0 +1,25 @@
+Drivers
+  - Specify how many seats available
+  - Specify start and endpoints
+  - Departure time
+  - Description of car (make/model/color/ ... license?)
+  
+  Extra Credit
+    - review and rate riders
+    - payment portal
+
+Users
+  - Search for car
+    - given departure time and departure location and seats available and destination
+    - sign up
+    - extra conditions - storage space, type of car
+
+  Extra Credit
+    - review and rate Drivers
+
+
+Both - 
+  - Scheduling
+    - 5 days a week
+
+  

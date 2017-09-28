@@ -1,0 +1,13 @@
+Mapbox
+  - rate limited (how much?)
+  - takes coordiate data (latitude, longitude)
+  - requires access token (free)
+  - geocoding - coordinates to names (street address - and vice versa) - paid feature per 600 requests
+    - retrieve list of places near entered locations
+  - navigation 60 requests per minute
+    - returns waypoints
+  - route between two waypoints
+
+
+Google Maps
+  - 

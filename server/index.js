@@ -1,12 +1,12 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var pools = require('../database');
+var pools = require('../database/dbMethods');
 
 var app = express();
 
 app.use(bodyParser.json());
 
-app.use(express.static(__dirname));
+app.use(express.static(__dirname + '/client/src/index'));
 
 app.get('/driver', function (req, res) {
   driver.selectAll(function(err, data) {
@@ -19,7 +19,7 @@ app.get('/driver', function (req, res) {
 });
 
 app.post('/driver', function (req, res) {
-	let driverid = 
+	let driverid;
 	let description = req.body.description;
 
 });
@@ -39,7 +39,7 @@ app.get('/rider', function (req, res) {
 })
 
 app.post('/rider', function (req, res) {
-	
+
 });
 
 app.get('/registration', function (req, res) {

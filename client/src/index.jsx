@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import RegistrationPage from './RegistrationPage.jsx';
+import RiderPage from './rider.jsx';
+import DriverPage from './DriverPage.jsx';
 import Login from './login.jsx';
 
 
@@ -16,12 +19,12 @@ class App extends React.Component {
       car: '',
       seats: 0,
       schedule: [] // schedule will contain rideId#'s that refer to entries in the rides join table
-    }
+    };
   }
   render() {
     return (
       <Login />
-    )
+    );
   }
 
 }

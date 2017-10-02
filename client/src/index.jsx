@@ -18,6 +18,7 @@ class App extends React.Component {
       schedule: [] // schedule will contain rideId#'s that refer to entries in the rides join table
     }
   }
+
   render() {
     return (
       <Login />
@@ -27,4 +28,3 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById(app));
-export default App;

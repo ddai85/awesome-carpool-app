@@ -7,12 +7,8 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
-<<<<<<< HEAD
-app.use(express.static(__dirname + '/client/src/index'));
-=======
-app.use(express.static(__dirname + '/../client/src'));
->>>>>>> 0d76ec1bc67218d10a8a1d1d2d7a522137924ac2
 
+app.use(express.static(__dirname + '/../client/src'));
 app.get('/driver', function (req, res) {
   driver.selectAll(function(err, data) {
     if(err) {
@@ -24,11 +20,9 @@ app.get('/driver', function (req, res) {
 });
 
 app.post('/driver', function (req, res) {
-<<<<<<< HEAD
-	let driverid;
-=======
+
+
 	let driverId = req.body.driverId;
->>>>>>> 0d76ec1bc67218d10a8a1d1d2d7a522137924ac2
 	let description = req.body.description;
 
 });

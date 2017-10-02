@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Login from './login.jsx';
 import RegistrationPage from './RegistrationPage.jsx';
 import RiderPage from './rider.jsx';
 import DriverPage from './DriverPage.jsx';
-import Login from './login.jsx';
 
 
 class App extends React.Component {
@@ -29,5 +29,5 @@ class App extends React.Component {
 
 }
 
-ReactDOM.render(<App />, document.getElementById(app));
-export default App;
+ReactDOM.render(<App />, document.getElementById('app'));
+

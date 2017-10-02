@@ -5,11 +5,11 @@ import RegistrationPage from './RegistrationPage.jsx';
 import RiderPage from './rider.jsx';
 import DriverPage from './DriverPage.jsx';
 
-
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      page: 'login',
       username: '',
       rider: false,
       driver: false,
@@ -19,15 +19,23 @@ class App extends React.Component {
       car: '',
       seats: 0,
       schedule: [] // schedule will contain rideId#'s that refer to entries in the rides join table
-    };
+    }
   }
+
   render() {
     return (
-      <Login />
-    );
+      <div>
+        {this.state.page === 'login'
+          ? <Login />
+          : this.state.page === 'registration'
+            ? <Registration />
+            : this.state.page === 'driver'
+              ? <Driver />
+              : <Rider />
+       }
+      </div>
+    )
   }
 
 }
-
 ReactDOM.render(<App />, document.getElementById('app'));
-

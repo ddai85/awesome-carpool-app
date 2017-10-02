@@ -7,8 +7,8 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
-app.use(express.static(__dirname + '/../client/dist'));
 
+app.use(express.static(__dirname + '/../client/src'));
 app.get('/driver', function (req, res) {
   driver.selectAll(function(err, data) {
     if(err) {
@@ -20,6 +20,8 @@ app.get('/driver', function (req, res) {
 });
 
 app.post('/driver', function (req, res) {
+
+
 	let driverId = req.body.driverId;
 	let description = req.body.description;
 

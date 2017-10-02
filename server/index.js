@@ -20,7 +20,7 @@ app.get('/driver', function (req, res) {
 });
 
 app.post('/driver', function (req, res) {
-	let driverid;
+	let driverId = req.body.driverId;
 	let description = req.body.description;
 
 });

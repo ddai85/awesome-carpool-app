@@ -5,8 +5,9 @@ var pools = require('../database');
 var app = express();
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 
-app.use(express.static(__dirname));
+app.use(express.static(__dirname + '/../client/src'));
 
 app.get('/driver', function (req, res) {
   driver.selectAll(function(err, data) {
@@ -19,7 +20,7 @@ app.get('/driver', function (req, res) {
 });
 
 app.post('/driver', function (req, res) {
-	let driverid = 
+	let driverId = req.body.driverId;
 	let description = req.body.description;
 
 });

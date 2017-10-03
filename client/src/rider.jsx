@@ -2,22 +2,31 @@ import React from 'react';
 
 const RiderPage = (props) => (
   <div>Rider Page</div>
-  <select Time>
-    <option value="startTime">7:00 am</option>
-    <option value="starTime">7:30 am</option>
-    <option value="startTime">8:00 am</option>
-    <option value="startTime">8:30 am</option>
-  </select>
+  <label>
+    Select Time:
+    <select onChange={this.handleTime} >
+      <option value="7am">7:00 am</option>
+      <option value="7:30am">7:30 am</option>
+      <option value="8am">8:00 am</option>
+      <option value="8:30am">8:30 am</option>
+    </select>
+  </label>
 
-  <select StartPoint>
-    <option value="startPoint">Oakland</option>
-    <option value="startPoint">San Jose</option>
-  </select>
+  <label>
+    Select start point:
+    <select onChange={this.handleStartPoint}>
+      <option value="oakland">Oakland</option>
+      <option value="san jose">San Jose</option>
+    </select>
+  </label>
 
-  <select Endpoint>
-    <option value="endPoint">Downtown</option>
-    <option value="endPoint">Hack Reactor</option>
-  </select>
+  <label>
+    Select endpoint:
+    <select onChange={this.handleEndPoint}>
+      <option value="downtown">Downtown</option>
+      <option value="hack reactor">Hack Reactor</option>
+    </select>
+  </label>
 
 );
 

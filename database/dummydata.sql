@@ -63,8 +63,8 @@ INSERT INTO rider (username) VALUES ('kirk');
 
 
 INSERT INTO rides (driverID, driverName, rider1, rider2, rider3) VALUES
-(1, 'rebeccaPhares', 'kirk', 'solT', 'shiHao');
+(1, 'rebeccaPhares', 1, 3, 5);
 INSERT INTO rides (driverID, driverName, rider1, rider2, rider3) VALUES
-(2, 'fredX', 'ian', 'jakeS');
+(2, 'fredX', 2, 4);
 INSERT INTO rides (driverID, driverName, rider1, rider2, rider3) VALUES
-(3, 'dannyT', 'victorN', 'victorL');
+(3, 'dannyT', 6, 7);

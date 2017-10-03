@@ -45,13 +45,13 @@ CREATE TABLE rides (
 )
 
 INSERT INTO driver (username, car, license, seats, home, work, departureTime)
-VALUES ('rebeccaPhares', 'BMW M3', '1HRB143', 3, 'Oakland', 'San Francisco', 08:00:00);
+VALUES ('rebeccaPhares', 'BMW M3', '1HRB143', 3, 'Oakland', 'Hack Reactor', 08:00:00);
 
 INSERT INTO driver (username, car, license, seats, home, work, departureTime)
-VALUES ('fredX', 'Tesla Model S', '1COD34U', 2, 'Oakland', 'San Francisco', 08:00:00);
+VALUES ('fredX', 'Tesla Model S', '1COD34U', 2, 'Oakland', 'Downtown', 08:00:00);
 
 INSERT INTO driver (username, car, license, seats, home, work, departureTime)
-VALUES ('dannyT', 'Mercedes-Benz AMG C 63', '7ECH433', 2, 'San Jose'. 'San Francisco', 08:00:00);
+VALUES ('dannyT', 'Mercedes-Benz AMG C 63', '7ECH433', 2, 'San Jose'. 'Hack Reactor', 08:00:00);
 
 INSERT INTO rider (username) VALUES ('shiHao');
 INSERT INTO rider (username) VALUES ('jakeS');

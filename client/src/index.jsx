@@ -39,17 +39,16 @@ class App extends React.Component {
 
   render() {
     return (
-      <RiderPage />
-      // <div>
-      //   {this.state.page === 'login'
-      //     ? <Login />
-      //     : this.state.page === 'registration'
-      //       ? <Registration />
-      //       : this.state.page === 'driver'
-      //         ? <Driver />
-      //         : <Rider />
-      //  }
-      // </div>
+      <div>
+        {this.state.page === 'login'
+          ? <Login />
+          : this.state.page === 'registration'
+            ? <Registration />
+            : this.state.page === 'driver'
+              ? <Driver />
+              : <Rider />
+       }
+      </div>
     )
   }
 

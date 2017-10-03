@@ -20,6 +20,21 @@ class App extends React.Component {
       seats: 0,
       schedule: [] // schedule will contain rideId#'s that refer to entries in the rides join table
     }
+    this.handleTime = this.handleTime.bind(this);
+    this.handleStartPoint = this.handleStartPoint.bind(this);
+    this.handleEndPoint = this.handleEndPoint.bind(this);
+  }
+  handleTime(e) {
+
+
+  }
+
+  handleStartPoint(e) {
+
+  }
+
+  handleEndPoint(e) {
+
   }
 
   render() {

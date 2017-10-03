@@ -2,6 +2,7 @@ import React from 'react';
 
 const RiderPage = (props) => (
 
+
   <div>
   <div>Rider Page</div>
     <form>

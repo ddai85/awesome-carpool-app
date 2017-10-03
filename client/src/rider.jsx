@@ -2,7 +2,6 @@ import React from 'react';
 
 const RiderPage = (props) => (
 
-
   <div>
   <div>Rider Page</div>
     <form>
@@ -33,6 +32,7 @@ const RiderPage = (props) => (
       </label>
     </form>
   </div>
+
 );
 
 export default RiderPage;

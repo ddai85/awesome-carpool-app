@@ -28,10 +28,10 @@ class App extends React.Component {
         {this.state.page === 'login'
           ? <Login />
           : this.state.page === 'registration'
-            ? <Registration />
+            ? <RegistrationPage />
             : this.state.page === 'driver'
               ? <Driver />
-              : <Rider />
+              : <RiderPage />
        }
       </div>
     )

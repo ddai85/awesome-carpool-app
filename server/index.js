@@ -8,6 +8,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
 
+<<<<<<< HEAD
 app.use(express.static(__dirname + '/../client/src'));
 app.use(express.static(__dirname + '/../client/dist'))
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
@@ -17,6 +18,9 @@ app.use('/bin', express.static(__dirname + '/../client/bin'));
 
 
 
+=======
+app.use(express.static(__dirname + '/../client/dist'));
+>>>>>>> 69574a772f3ecc99c485dc6a19e0a620a1122c2a
 app.get('/driver', function (req, res) {
   driver.selectAll(function(err, data) {
     if(err) {

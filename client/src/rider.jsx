@@ -4,7 +4,7 @@ const RiderPage = (props) => (
 
 
   <div>
-  <div>Rider Page</div>
+    <div>Rider Page</div>
     <form>
       <label>
         Select Time:
@@ -32,15 +32,6 @@ const RiderPage = (props) => (
         </select>
       </label>
     </form>
-  </div>
-
-    <label>
-      Select endpoint:
-      <select onChange={this.handleEndPoint}>
-        <option value="downtown">Downtown</option>
-        <option value="hack reactor">Hack Reactor</option>
-      </select>
-    </label>
   </div>
 );
 

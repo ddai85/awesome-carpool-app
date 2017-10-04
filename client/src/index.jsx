@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Login from './login.jsx';
+import Navbar from './navbar.jsx';
 import RegistrationPage from './RegistrationPage.jsx';
 import RiderPage from './rider.jsx';
 import DriverPage from './DriverPage.jsx';
@@ -12,6 +12,7 @@ class App extends React.Component {
     this.state = {
       page: 'login',
       username: '',
+      password: '',
       rider: false,
       driver: false,
       startPoint: '',
@@ -21,10 +22,25 @@ class App extends React.Component {
       seats: 0,
       schedule: [] // schedule will contain rideId#'s that refer to entries in the rides join table
     }
+
+    this.getLogin = this.getLogin.bind(this);
+    this.renderRegistration = this.renderRegistration.bind(this);
     this.handleTime = this.handleTime.bind(this);
     this.handleStartPoint = this.handleStartPoint.bind(this);
     this.handleEndPoint = this.handleEndPoint.bind(this);
   }
+
+  renderRegistration () {
+    this.setState({page: 'registration'});
+  }
+
+  getLogin (name, pass) {
+    this.setState({
+      username: name,
+      password: pass
+    })
+  }
+  
   handleTime(e) {
 
 
@@ -78,11 +94,14 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container-fluid">
         {this.state.page === 'login'
-          ? <Login />
+          ? <Navbar 
+            getName={this.getLogin}
+            renderRegistration={this.renderRegistration}
+          />
           : this.state.page === 'registration'
-            ? <Registration />
+            ? <RegistrationPage />
             : this.state.page === 'driver'
               ? <Driver driver={this.state.driver} schedule={this.state.schedule}/>
               : <Rider />
@@ -90,6 +109,6 @@ class App extends React.Component {
       </div>
     )
   }
-
 }
+
 ReactDOM.render(<App />, document.getElementById('app'));

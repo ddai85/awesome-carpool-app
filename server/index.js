@@ -8,7 +8,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
 
+app.use(express.static(__dirname + '/../client/src'));
+app.use(express.static(__dirname + '/../client/dist'))
+app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
+app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'));
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
+app.use('/bin', express.static(__dirname + '/../client/bin'));
 app.use(express.static(__dirname + '/../client/dist'));
+
 app.get('/driver', function (req, res) {
   driver.selectAll(function(err, data) {
     if(err) {

@@ -4,7 +4,7 @@ const RiderPage = (props) => (
 
 
   <div>
-  <div>Rider Page</div>
+    <div>Rider Page</div>
     <form>
       <label>
         Select Time:
@@ -33,7 +33,6 @@ const RiderPage = (props) => (
       </label>
     </form>
   </div>
-
 );
 
 export default RiderPage;

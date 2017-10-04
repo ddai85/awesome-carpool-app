@@ -12,6 +12,7 @@ class Navbar extends React.Component {
     }
 
     this.getName = props.getName;
+    this.renderRegistration = props.renderRegistration;
     this.handleUpdate = this.handleUpdate.bind(this);
     this.submit = this.submit.bind(this);
   }
@@ -37,7 +38,7 @@ class Navbar extends React.Component {
             <input onChange={this.handleUpdate} value={this.state.username} className="form-control mr-sm-2" type="text" placeholder="username" aria-label="username" name="username"></input>
             <input onChange={this.handleUpdate} value={this.state.password} className="form-control mr-sm-2" type="password" placeholder="password" aria-label="password" name="password"></input>
             <button className="btn btn-outline-light my-2 my-sm-0" type="submit">Login</button>
-            <button className="btn btn-outline-light my-2 my-sm-0" type="submit">Register</button>
+            <button onClick={this.renderRegistration} className="btn btn-outline-light my-2 my-sm-0" type="submit">Register</button>
           </form>
         </nav>
       </div>

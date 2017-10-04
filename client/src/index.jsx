@@ -23,6 +23,11 @@ class App extends React.Component {
     }
 
     this.getLogin = this.getLogin.bind(this);
+    this.renderRegistration = this.renderRegistration.bind(this);
+  }
+
+  renderRegistration () {
+    this.setState({page: 'registration'});
   }
 
   getLogin (name, pass) {
@@ -36,7 +41,10 @@ class App extends React.Component {
     return (
       <div className="container-fluid">
         {this.state.page === 'login'
-          ? <Navbar getName={this.getLogin}/>
+          ? <Navbar 
+            getName={this.getLogin}
+            renderRegistration={this.renderRegistration}
+          />
           : this.state.page === 'registration'
             ? <RegistrationPage />
             : this.state.page === 'driver'

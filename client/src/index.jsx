@@ -11,6 +11,7 @@ class App extends React.Component {
     this.state = {
       page: 'login',
       username: '',
+      password: '',
       rider: false,
       driver: false,
       startPoint: '',
@@ -20,19 +21,28 @@ class App extends React.Component {
       seats: 0,
       schedule: [] // schedule will contain rideId#'s that refer to entries in the rides join table
     }
+
+    this.getLogin = this.getLogin.bind(this);
+  }
+
+  getLogin (name, pass) {
+    this.setState({
+      username: name,
+      password: pass
+    });
   }
 
   render() {
     return (
       <div className="container-fluid">
         {this.state.page === 'login'
-          ? <Navbar />
+          ? <Navbar getName={this.getLogin}/>
           : this.state.page === 'registration'
             ? <RegistrationPage />
             : this.state.page === 'driver'
               ? <Driver />
               : <RiderPage />
-       }
+        }
       </div>
     )
   }

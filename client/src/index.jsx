@@ -15,12 +15,13 @@ class App extends React.Component {
       password: '',
       rider: false,
       driver: false,
-      startPoint: '',
-      endPoint: '',
+      home: '',
+      work: '',
       departureTime: '00:00:00',
       car: '',
       seats: 0,
       schedule: [] // schedule will contain rideId#'s that refer to entries in the rides join table
+      //edited state variable names to match mysql database fields
     }
 
     this.getLogin = this.getLogin.bind(this);
@@ -29,6 +30,7 @@ class App extends React.Component {
     this.handleStartPoint = this.handleStartPoint.bind(this);
     this.handleEndPoint = this.handleEndPoint.bind(this);
   }
+
 
   renderRegistration () {
     this.setState({page: 'registration'});
@@ -41,6 +43,8 @@ class App extends React.Component {
     })
   }
   
+=======
+>>>>>>> Integrate database and stub out database methods for registration/driver pages
   handleTime(e) {
 
 
@@ -52,6 +56,38 @@ class App extends React.Component {
 
   handleEndPoint(e) {
 
+  }
+
+  saveDriver(username, car, license, seats, home, work, departureTime) {
+    var driverInfo = { username: username, car: car, license: license, seats: seats, home: home, work: work, departureTime: departureTime };
+    $.ajax({
+      method: 'POST',
+      url: '/registration', 
+      contentType: 'application/json',
+      data: JSON.stringify(driverInfo),
+      success: (data) => {
+        console.log('POST success!');
+      },
+      error: (err) => {
+        console.log('err', err);
+      }
+    });
+  }
+
+  saveRider(username) {
+    var riderInfo = { username: username };
+    $.ajax({
+      method: 'POST',
+      url: '/registration', 
+      contentType: 'application/json',
+      data: JSON.stringify(riderInfo),
+      success: (data) => {
+        console.log('POST success!');
+      },
+      error: (err) => {
+        console.log('err', err);
+      }
+    });
   }
 
   //get riders schedule for driver on driver login success
@@ -101,7 +137,7 @@ class App extends React.Component {
             renderRegistration={this.renderRegistration}
           />
           : this.state.page === 'registration'
-            ? <RegistrationPage />
+            ? <RegistrationPage username={this.state.username}/>
             : this.state.page === 'driver'
               ? <Driver driver={this.state.driver} schedule={this.state.schedule}/>
               : <Rider />

@@ -1,0 +1,21 @@
+body {
+  background-image: url("../bin/baybridge.jpeg")
+}
+
+#registration {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.navbar-custom {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.5)
+}
+
+#title {
+  color: rgba(255, 255, 255, 0.8)
+}
+
+.btn {
+  margin-right: 10px
+}

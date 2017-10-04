@@ -33,6 +33,7 @@ const RiderPage = (props) => (
       </label>
     </form>
   </div>
+
 );
 
 export default RiderPage;

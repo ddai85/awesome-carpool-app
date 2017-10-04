@@ -43,8 +43,6 @@ class App extends React.Component {
     })
   }
   
-=======
->>>>>>> Integrate database and stub out database methods for registration/driver pages
   handleTime(e) {
 
 

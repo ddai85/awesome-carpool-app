@@ -38,11 +38,12 @@ class App extends React.Component {
   }
 
   getLogin (name, pass, registration) {
-    this.setState({
-      username: name,
-      password: pass
+    this.setState({username: name, password: pass}, () => {
+      console.log('user state updated:', this.state.username)
     });
-    if (registration) {this.renderRegistration();}
+    if (registration) {
+      this.renderRegistration();
+    }
   }
   
   handleTime(e) {

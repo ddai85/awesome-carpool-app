@@ -12,7 +12,6 @@ class Navbar extends React.Component {
     }
 
     this.getName = props.getName;
-    this.renderRegistration = props.renderRegistration;
     this.handleUpdate = this.handleUpdate.bind(this);
     this.submit = this.submit.bind(this);
   }
@@ -26,8 +25,8 @@ class Navbar extends React.Component {
 
   submit(e) {
     e.preventDefault();
-    console.log('Submitted');
-    this.getName(this.state.username, this.state.password);
+    var registration = e.target.name === 'registration';
+    this.getName(this.state.username, this.state.password, registration);
   }
 
   render() {
@@ -35,11 +34,11 @@ class Navbar extends React.Component {
       <div>
         <nav className="navbar navbar-expand-lg navbar-transparent">
           <div className="navbar-brand" id="title">Awesome Carpool App</div>
-          <form onSubmit={this.submit} className="form-inline">
+          <form onClick={this.submit} className="form-inline">
             <input onChange={this.handleUpdate} value={this.state.username} className="form-control mr-sm-2" type="text" placeholder="username" aria-label="username" name="username"></input>
             <input onChange={this.handleUpdate} value={this.state.password} className="form-control mr-sm-2" type="password" placeholder="password" aria-label="password" name="password"></input>
             <button className="btn btn-outline-light my-2 my-sm-0" type="submit">Login</button>
-            <button onClick={this.renderRegistration} className="btn btn-outline-light my-2 my-sm-0" type="submit">Register</button>
+            <button onClick={this.submit} className="btn btn-outline-light my-2 my-sm-0" type="submit" name="registration">Register</button>
           </form>
         </nav>
       </div>

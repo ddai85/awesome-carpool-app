@@ -69,7 +69,7 @@ app.post('/registration', function (req, res) {
   } else if(req.body.hasOwnProperty('rider')) {
     pools.registerRider(req.body, res);
   }
-  res.send();
+  //res sent in database methods
 });
 
 

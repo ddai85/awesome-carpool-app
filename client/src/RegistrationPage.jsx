@@ -17,7 +17,7 @@ class RegistrationPage extends React.Component {
       work: '',
       seats: '',
       license: '',
-      departureTime: '8:00 AM'
+      departureTime: '8:00:00'
 
     };
 

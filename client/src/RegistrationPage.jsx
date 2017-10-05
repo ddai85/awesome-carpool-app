@@ -5,12 +5,6 @@ class RegistrationPage extends React.Component {
     super(props);
     this.state = { 
 
-      //update variable names to match mysql database fields
-      //Warning: Failed form propType: You provided a `value` prop to a form field without 
-      //an `onChange` handler. This will render a read-only field. If the field should be mutable 
-      //use `defaultValue`. Otherwise, set either `onChange` or `readOnly`. Check the render method 
-      //of `RegistrationPage`.
-
       username: '',
       car: '',
       home: '',
@@ -33,11 +27,11 @@ class RegistrationPage extends React.Component {
     this.registerRider = this.registerRider.bind(this);
   }
 
-  // componentDidMount(){
-  //   this.setState({
-  //     username: this.props.username
-  //   });
-  // }
+  componentDidMount(){
+    this.setState({
+      username: this.props.username
+    });
+  }
 
   updateUsername(e) {
     this.setState({
@@ -93,7 +87,7 @@ class RegistrationPage extends React.Component {
     return (<div>
       <div>
         <h3>Driver Registration</h3>
-        Name: <input onChange={this.updateUsername} defaultValue={this.state.username}></input>
+        Name: <input onChange={this.updateUsername} value={this.state.username}></input>
         <br />
         Car: <input onChange={this.updateCar} value={this.state.car}></input>
         <br />
@@ -113,7 +107,7 @@ class RegistrationPage extends React.Component {
       </div>
       <div>
         <h3>Rider Registration</h3>
-        Name: <input onChange={this.updateUsername} defaultValue={this.state.username}></input>
+        Name: <input onChange={this.updateUsername} value={this.state.username}></input>
         <button onClick={this.registerRider}>Register</button>
       </div>
     </div>);

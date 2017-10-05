@@ -18,7 +18,7 @@ class App extends React.Component {
       driver: false,
       home: '',
       work: '',
-      departureTime: '00:00:00',
+      departureTime: '',
       car: '',
       seats: 0,
       schedule: [] // schedule will contain rideId#'s that refer to entries in the rides join table
@@ -137,9 +137,9 @@ class App extends React.Component {
             getName={this.getLogin}
           />
           : this.state.page === 'registration'
-            ? <RegistrationPage saveDriver={this.saveDriver} saveRider={this.saveRider}/>
+            ? <RegistrationPage saveDriver={this.saveDriver} saveRider={this.saveRider} username={this.state.username} />
             : this.state.page === 'driver'
-              ? <Driver driver={this.state.driver} schedule={this.state.schedule} />
+              ? <Driver driver={this.state.driver} getRideSchedule={this.getRideSchedule} schedule={this.state.schedule} />
               : <Rider />
        }
       </div>

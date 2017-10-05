@@ -16,7 +16,7 @@ var registerDriver = function(driverInfo, res) {
   	if (err) {
   		res.send(err);
   	}
-  	console.log("results", results);
+  	console.log("driver table results", results);
   	res.send();
   });
 }
@@ -34,16 +34,36 @@ var registerRider = function(riderInfo, res) {
 }
 
 //insert driver pool date into database from driver page
-var registerDriverDate = function(driverInfo, res) {
-
+var registerDriverRide = function(driverInfo, res) {
+	connection.query(`SELECT id FROM driver WHERE username = '${driverInfo.driver}'`, function(err, results, fields) {
+  	if (err) {
+  		res.send(err);
+  	}
+  	console.log("driver table query results", results[0].id);
+  	console.log(driverInfo.driver);
+    connection.query('INSERT into rides (driverID, driverName, departureDate) values (?, ?, ?)', [results[0].id, driverInfo.driver, results[0].date], function(err, results, fields) {
+	  	if (err) {
+	  		res.send(err);
+	  	}
+	  	console.log("rides table results", results);
+	  	res.send();
+	  });
+	});
 }
 
 //get list of riders for driver pool date when logging into driver
-var getDriverSchedule = function () {
-
+var getDriverSchedule = function (res) {
+	console.log('getDriverSchedule db method');
+	connection.query('INSERT into rider (username) values (?)', [riderInfo.rider], function(err, results, fields) {
+  	if (err) {
+  		res.send(err);
+  	}
+  	console.log("results", results);
+  	res.send();
+  });
 }
 
 module.exports.registerDriver = registerDriver;
 module.exports.registerRider = registerRider;
-module.exports.registerDriverDate = registerDriverDate;
+module.exports.registerDriverRide = registerDriverRide;
 module.exports.getDriverSchedule = getDriverSchedule;

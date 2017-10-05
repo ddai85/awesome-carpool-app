@@ -139,7 +139,7 @@ class App extends React.Component {
           : this.state.page === 'registration'
             ? <RegistrationPage saveDriver={this.saveDriver} saveRider={this.saveRider}/>
             : this.state.page === 'driver'
-              ? <Driver driver={this.state.driver} schedule={this.state.schedule} />
+              ? <Driver driver={this.state.driver} getRideSchedule={this.getRideSchedule} schedule={this.state.schedule} />
               : <Rider />
        }
       </div>

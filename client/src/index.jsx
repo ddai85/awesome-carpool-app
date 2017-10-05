@@ -37,11 +37,12 @@ class App extends React.Component {
     this.setState({page: 'registration'});
   }
 
-  getLogin (name, pass) {
+  getLogin (name, pass, registration) {
     this.setState({
       username: name,
       password: pass
-    })
+    });
+    if (registration) {this.renderRegistration();}
   }
   
   handleTime(e) {
@@ -133,7 +134,6 @@ class App extends React.Component {
         {this.state.page === 'login'
           ? <Navbar 
             getName={this.getLogin}
-            renderRegistration={this.renderRegistration}
           />
           : this.state.page === 'registration'
             ? <RegistrationPage saveDriver={this.saveDriver} saveRider={this.saveRider}/>

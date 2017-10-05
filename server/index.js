@@ -63,7 +63,13 @@ app.get('/registration', function (req, res) {
 });
 
 app.post('/registration', function (req, res) {
-
+  console.log('posted', req.body);
+  if(req.body.hasOwnProperty('driver')) {
+    pools.registerDriver(req.body, res);
+  } else if(req.body.hasOwnProperty('rider')) {
+    pools.registerRider(req.body, res);
+  }
+  //res sent in database methods
 });
 
 

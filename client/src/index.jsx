@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import $ from 'jquery';
 import Navbar from './navbar.jsx';
 import RegistrationPage from './RegistrationPage.jsx';
 import RiderPage from './rider.jsx';
@@ -57,7 +58,7 @@ class App extends React.Component {
   }
 
   saveDriver(username, car, license, seats, home, work, departureTime) {
-    var driverInfo = { username: username, car: car, license: license, seats: seats, home: home, work: work, departureTime: departureTime };
+    var driverInfo = { driver: username, car: car, license: license, seats: seats, home: home, work: work, departureTime: departureTime };
     $.ajax({
       method: 'POST',
       url: '/registration', 
@@ -73,7 +74,7 @@ class App extends React.Component {
   }
 
   saveRider(username) {
-    var riderInfo = { username: username };
+    var riderInfo = { rider: username };
     $.ajax({
       method: 'POST',
       url: '/registration', 
@@ -135,9 +136,9 @@ class App extends React.Component {
             renderRegistration={this.renderRegistration}
           />
           : this.state.page === 'registration'
-            ? <RegistrationPage username={this.state.username}/>
+            ? <RegistrationPage saveDriver={this.saveDriver} saveRider={this.saveRider}/>
             : this.state.page === 'driver'
-              ? <Driver driver={this.state.driver} schedule={this.state.schedule}/>
+              ? <Driver driver={this.state.driver} schedule={this.state.schedule} />
               : <Rider />
        }
       </div>

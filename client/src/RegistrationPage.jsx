@@ -6,18 +6,23 @@ class RegistrationPage extends React.Component {
     this.state = { 
 
       //update variable names to match mysql database fields
+      //Warning: Failed form propType: You provided a `value` prop to a form field without 
+      //an `onChange` handler. This will render a read-only field. If the field should be mutable 
+      //use `defaultValue`. Otherwise, set either `onChange` or `readOnly`. Check the render method 
+      //of `RegistrationPage`.
+
       username: '',
       car: '',
       home: '',
       work: '',
-      seats: 0,
+      seats: '',
       license: '',
       departureTime: '8:00 AM'
 
     };
 
     //bind all functions to this context
-    // this.updateUsername = this.updateUsername.bind(this);
+    this.updateUsername = this.updateUsername.bind(this);
     this.updateCar = this.updateCar.bind(this);
     this.updateHome = this.updateHome.bind(this);
     this.updateWork = this.updateWork.bind(this);
@@ -28,17 +33,17 @@ class RegistrationPage extends React.Component {
     this.registerRider = this.registerRider.bind(this);
   }
 
-  componentDidMount(){
-    this.setState({
-      username: this.props.username
-    });
-  }
-
-  // updateUsername(e) {
+  // componentDidMount(){
   //   this.setState({
-  //     username: e.target.value
+  //     username: this.props.username
   //   });
   // }
+
+  updateUsername(e) {
+    this.setState({
+      username: e.target.value
+    });
+  }
 
   updateCar(e) {
     this.setState({
@@ -88,7 +93,7 @@ class RegistrationPage extends React.Component {
     return (<div>
       <div>
         <h3>Driver Registration</h3>
-        Name: <input onChange={this.updateUsername} value={this.state.username}></input>
+        Name: <input onChange={this.updateUsername} defaultValue={this.state.username}></input>
         <br />
         Car: <input onChange={this.updateCar} value={this.state.car}></input>
         <br />
@@ -96,11 +101,11 @@ class RegistrationPage extends React.Component {
         <br />
         Work: <input onChange={this.updateWork} value={this.state.work}></input>
         <br />
-        Number of Seats: <input onChange={this.updateSeats} value={this.state.seats}></input>
+        Number of Seats: <input onChange={this.updateSeats} value={this.state.seats} ></input>
         <br />
         License Number: <input onChange={this.updateLicense} value={this.state.license}></input>
         <br />
-        Departure Time: <input onChange={this.updatedDepartureTime} value={this.state.departureTime}></input>
+        Departure Time: <input onChange={this.updatedDepartureTime} defaultValue={this.state.departureTime} ></input>
         <button onClick={this.registerDriver}>Register</button>
         <br />
         <br />
@@ -108,7 +113,7 @@ class RegistrationPage extends React.Component {
       </div>
       <div>
         <h3>Rider Registration</h3>
-        Name: <input onChange={this.updateUsername} value={this.state.username}></input>
+        Name: <input onChange={this.updateUsername} defaultValue={this.state.username}></input>
         <button onClick={this.registerRider}>Register</button>
       </div>
     </div>);

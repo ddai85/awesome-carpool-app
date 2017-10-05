@@ -26,6 +26,7 @@ class Navbar extends React.Component {
 
   submit(e) {
     e.preventDefault();
+    console.log('Submitted');
     this.getName(this.state.username, this.state.password);
   }
 

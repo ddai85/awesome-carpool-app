@@ -63,7 +63,8 @@ app.get('/registration', function (req, res) {
 });
 
 app.post('/registration', function (req, res) {
-
+  console.log('posted', req.body);
+  res.send();
 });
 
 

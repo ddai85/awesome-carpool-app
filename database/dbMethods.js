@@ -10,13 +10,13 @@ var connection = mysql.createConnection({
 });
 
 //insert driver into database after registration
-var registerDriver = function() {
-
+var registerDriver = function(driverInfo, res) {
+  console.log('driver db method', driverInfo);
 }
 
 //insert rider into database after registration
-var registerRider = function() {
-
+var registerRider = function(riderInfo, res) {
+  console.log('rider db method', riderInfo);
 }
 
 //insert driver pool date into database from driver page

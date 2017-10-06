@@ -18,7 +18,7 @@ class App extends React.Component {
       driver: false,
       home: '',
       work: '',
-      departureTime: '',
+      departureTime: '08:00:00',
       car: '',
       seats: 0,
       schedule: [] // schedule will contain rideId#'s that refer to entries in the rides join table
@@ -31,6 +31,7 @@ class App extends React.Component {
     this.handleStartPoint = this.handleStartPoint.bind(this);
     this.handleEndPoint = this.handleEndPoint.bind(this);
     this.setUserPage = this.setUserPage.bind(this);
+    this.postRideSchedule = this.postRideSchedule.bind(this);
   }
 
 
@@ -57,7 +58,6 @@ class App extends React.Component {
   }
 
   handleTime(e) {
-
 
   }
 
@@ -124,8 +124,9 @@ class App extends React.Component {
   
   //post request from driver page when date and time is submitted
   //post to '/driver' endpoint and insert into rides database
-  postRideSchedule(driver, date, time) {
-    var rideSchedule = {driver: driver, date: date, time: time};
+  postRideSchedule(driver, date) {
+    console.log('postRideSchedule!!!!');
+    var rideSchedule = {username: driver, departureDate: date};
     $.ajax({
       method: 'POST',
       url: '/driver', 
@@ -148,9 +149,9 @@ class App extends React.Component {
             getName={this.getLogin}
           />
           : this.state.page === 'registration'
-            ? <RegistrationPage saveDriver={this.saveDriver} saveRider={this.saveRider} username={this.state.username} setUserPage={this.setUserPage}/>
+            ? <RegistrationPage saveDriver={this.saveDriver} saveRider={this.saveRider} username={this.state.username} setUserPage={this.setUserPage} />
             : this.state.page === 'driver'
-              ? <DriverPage driver={this.state.driver} getRideSchedule={this.getRideSchedule} schedule={this.state.schedule} />
+              ? <DriverPage username={this.state.username} departureTime={this.state.departureTime} getRideSchedule={this.getRideSchedule} postRideSchedule={this.postRideSchedule} schedule={this.state.schedule} />
               : <RiderPage />
        }
       </div>

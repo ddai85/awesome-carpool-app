@@ -8,8 +8,8 @@ class DriverPage extends React.Component {
 		super(props);
 		this.state = {
       username: '',
-			departureDate: '',
-      // departureTime: '8:00:00'
+      departureTime: '',
+      departureDate: ''
 		};
 		this.updateDriverDate = this.updateDriverDate.bind(this);
 		// this.updateDriverTime = this.updateDriverTime.bind(this);
@@ -18,6 +18,10 @@ class DriverPage extends React.Component {
 
   componentDidMount() {
     this.props.getRideSchedule();
+    this.setState({
+      username: this.props.username,
+      departureTime: this.props.departureTime
+    });
   }
 
 	updateDriverDate(e) {
@@ -33,9 +37,11 @@ class DriverPage extends React.Component {
   //   });
   // }
 
-	scheduleRide() {
+	scheduleRide(event) {
     //add this.props.departureTime for future integration
-    this.props.postRideSchedule(this.props.driver, this.state.departureDate);
+    event.preventDefault();
+    alert('Schedule confirmed');
+    this.props.postRideSchedule(this.props.username, this.state.departureDate);
   }
 
 	render() {
@@ -48,7 +54,7 @@ class DriverPage extends React.Component {
           </label>
           <label>
           Time:
-          <input type="text" defaultValue={this.state.value} onChange={this.updateDriverTime} />
+          <input type="text" value={this.state.departureTime} onChange={this.updateDriverTime} />
           </label>
         	<input type="submit" value="Submit" />
       	</form>

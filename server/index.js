@@ -27,11 +27,9 @@ app.get('/driver', function (req, res) {
 });
 
 app.post('/driver', function (req, res) {
+  console.log('driver schedule posted', req.body);
 
-
-	let driverId = req.body.driverId;
-	let description = req.body.description;
-
+  res.send();
 });
 
 app.get('/rides', function (req, res) {

@@ -45,7 +45,8 @@ app.get('/rides', function (req, res) {
 });
 
 app.get('/rider', function (req, res) {
-
+  console.log(req.query);
+  pools.getRideList(req, res);
 })
 
 app.post('/rider', function (req, res) {

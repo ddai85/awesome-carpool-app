@@ -78,6 +78,9 @@ class App extends React.Component {
             })
           }
         }
+        if (data === []) {
+          this.renderRegistration();
+        }
       },
       error: (err) => {
         console.log('err', err);
@@ -190,7 +193,7 @@ class App extends React.Component {
             ? <RegistrationPage saveDriver={this.saveDriver} saveRider={this.saveRider} username={this.state.username} setUserPage={this.setUserPage}/>
             : this.state.page === 'driver'
               ? <DriverPage driver={this.state.driver} getRideSchedule={this.getRideSchedule} schedule={this.state.schedule} />
-              : <RiderPage />
+              : <RiderPage rider={this.state.username}/>
        }
       </div>
     )

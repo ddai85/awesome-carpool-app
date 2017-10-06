@@ -88,8 +88,33 @@ var fetchUserData = (res, username) => {
 	});
 }
 
+var getRideList = (req, res) => {
+	const ridesQuery = `
+		SELECT 
+			driver.username, 
+			driver.car, 
+			driver.seats, 
+			driver.home, 
+			driver.work, 
+			driver.departureTime, 
+			rides.departureDate, 
+			rides.rider* 
+		FROM 
+			driver, rides 
+		WHERE 
+			rides.departureDate = '${req.query.date}' 
+			AND driver.home = '${req.query.pickup}' 
+			AND driver.work = '${req.query.destination}' 
+			AND driver.departureTime = '${req.query.time}' 
+			AND driver.id = rides.driverID`;
+	connetion.query(ridesQuery, (err, data) => {
+		console.log(data);
+	});
+}
+
 module.exports.fetchUserData = fetchUserData;
 module.exports.registerDriver = registerDriver;
 module.exports.registerRider = registerRider;
 module.exports.registerDriverRide = registerDriverRide;
 module.exports.getDriverSchedule = getDriverSchedule;
+module.exports.getRideList = getRideList;

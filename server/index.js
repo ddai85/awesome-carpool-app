@@ -32,13 +32,8 @@ app.post('/driver', function (req, res) {
 });
 
 app.get('/rides', function (req, res) {
-  rider.selectAll(function(err, data) {
-    if(err) {
-      res.sendStatus(500);
-    } else {
-      res.json(data);
-    }
-  });
+  console.log('driver rides get');
+  // pools.getDriverSchedule(res);
 });
 
 app.get('/rider', function (req, res) {

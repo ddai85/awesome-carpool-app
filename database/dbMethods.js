@@ -54,7 +54,7 @@ var registerDriverRide = function(driverInfo, res) {
 //get list of riders for driver pool date when logging into driver
 var getDriverSchedule = function (res) {
 	console.log('getDriverSchedule db method');
-	connection.query('INSERT into rider (username) values (?)', [riderInfo.rider], function(err, results, fields) {
+	connection.query('SELECT date, rider1', function(err, results, fields) {
   	if (err) {
   		res.send(err);
   	}

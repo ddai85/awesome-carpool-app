@@ -45,10 +45,9 @@ class App extends React.Component {
     if (registration) {
       this.renderRegistration();
     } else {
-      
     }
   }
-
+  
   checkUser() {
     $.ajax({
       method: 'GET',
@@ -56,8 +55,28 @@ class App extends React.Component {
       contentType: 'text/html',
       data: this.state.username,
       success: (data) => {
-        console.log(data);
-        this.setState({rider: true})
+        if (data !== []) {
+          if (data[0] === 'rider') {
+            console.log('Rider logged in');
+            this.setState({
+              rider: true,
+              page: 'rider'
+            })
+          }
+          if (data[0] === 'driver') {
+            var driver = data[1][0];
+            console.log(`${driver.username} is logged in as a driver.`);
+            this.setState({
+              driver: true,
+              car: driver.car,
+              home: driver.home,
+              work: driver.work,
+              departureTime: driver.departureTime,
+              seats: driver.seats,
+              page: 'driver'
+            })
+          }
+        }
       },
       error: (err) => {
         console.log('err', err);
@@ -151,14 +170,15 @@ class App extends React.Component {
   render() {
     return (
       <div className="container-fluid">
-        {this.state.page === 'login'
-          ? <Navbar 
+          <Navbar 
             getName={this.getLogin}
           />
+        {this.state.page === 'login'
+          ? <div></div>
           : this.state.page === 'registration'
             ? <RegistrationPage saveDriver={this.saveDriver} saveRider={this.saveRider}/>
             : this.state.page === 'driver'
-              ? <Driver driver={this.state.driver} schedule={this.state.schedule} />
+              ? <DriverPage driver={this.state.driver} schedule={this.state.schedule} />
               : <RiderPage />
        }
       </div>

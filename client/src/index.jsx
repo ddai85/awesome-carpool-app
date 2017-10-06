@@ -18,7 +18,7 @@ class App extends React.Component {
       driver: false,
       home: '',
       work: '',
-      departureTime: '00:00:00',
+      departureTime: '',
       car: '',
       seats: 0,
       schedule: [] // schedule will contain rideId#'s that refer to entries in the rides join table
@@ -30,7 +30,11 @@ class App extends React.Component {
     this.handleTime = this.handleTime.bind(this);
     this.handleStartPoint = this.handleStartPoint.bind(this);
     this.handleEndPoint = this.handleEndPoint.bind(this);
+<<<<<<< HEAD
     this.checkUser = this.checkUser.bind(this);
+=======
+    this.setUserPage = this.setUserPage.bind(this);
+>>>>>>> 7ec73f5b448eee5828acc6477ff3dc4e0eb9b824
   }
 
 
@@ -48,6 +52,7 @@ class App extends React.Component {
     }
   }
   
+<<<<<<< HEAD
   checkUser() {
     $.ajax({
       method: 'GET',
@@ -84,6 +89,17 @@ class App extends React.Component {
     });
   }
   
+=======
+  setUserPage(type){
+    console.log('set user page');
+    if (type === 'driver') {
+      this.setState({page: 'driver', driver: true});
+    } else if (type === 'rider') {
+      this.setState({page: 'rider', rider: true});
+    }
+  }
+
+>>>>>>> 7ec73f5b448eee5828acc6477ff3dc4e0eb9b824
   handleTime(e) {
 
 
@@ -114,6 +130,7 @@ class App extends React.Component {
   }
 
   saveRider(username) {
+    console.log('save rider');
     var riderInfo = { rider: username };
     $.ajax({
       method: 'POST',
@@ -176,9 +193,13 @@ class App extends React.Component {
         {this.state.page === 'login'
           ? <div></div>
           : this.state.page === 'registration'
-            ? <RegistrationPage saveDriver={this.saveDriver} saveRider={this.saveRider}/>
+            ? <RegistrationPage saveDriver={this.saveDriver} saveRider={this.saveRider} username={this.state.username} setUserPage={this.setUserPage}/>
             : this.state.page === 'driver'
+<<<<<<< HEAD
               ? <DriverPage driver={this.state.driver} schedule={this.state.schedule} />
+=======
+              ? <DriverPage driver={this.state.driver} getRideSchedule={this.getRideSchedule} schedule={this.state.schedule} />
+>>>>>>> 7ec73f5b448eee5828acc6477ff3dc4e0eb9b824
               : <RiderPage />
        }
       </div>

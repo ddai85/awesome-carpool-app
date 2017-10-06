@@ -30,6 +30,7 @@ class App extends React.Component {
     this.handleTime = this.handleTime.bind(this);
     this.handleStartPoint = this.handleStartPoint.bind(this);
     this.handleEndPoint = this.handleEndPoint.bind(this);
+    this.checkUser = this.checkUser.bind(this);
   }
 
 
@@ -39,11 +40,29 @@ class App extends React.Component {
 
   getLogin (name, pass, registration) {
     this.setState({username: name, password: pass}, () => {
-      console.log('user state updated:', this.state.username)
+      this.checkUser();
     });
     if (registration) {
       this.renderRegistration();
+    } else {
+      
     }
+  }
+
+  checkUser() {
+    $.ajax({
+      method: 'GET',
+      url: '/login',
+      contentType: 'text/html',
+      data: this.state.username,
+      success: (data) => {
+        console.log(data);
+        this.setState({rider: true})
+      },
+      error: (err) => {
+        console.log('err', err);
+      }
+    });
   }
   
   handleTime(e) {
@@ -140,7 +159,7 @@ class App extends React.Component {
             ? <RegistrationPage saveDriver={this.saveDriver} saveRider={this.saveRider}/>
             : this.state.page === 'driver'
               ? <Driver driver={this.state.driver} schedule={this.state.schedule} />
-              : <Rider />
+              : <RiderPage />
        }
       </div>
     )

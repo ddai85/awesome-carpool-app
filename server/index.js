@@ -62,6 +62,10 @@ app.get('/registration', function (req, res) {
   });
 });
 
+app.get('/login', (req, res) => {
+  pools.fetchUserData(res, req._parsedOriginalUrl.query);
+})
+
 app.post('/registration', function (req, res) {
   console.log('posted', req.body);
   if(req.body.hasOwnProperty('driver')) {

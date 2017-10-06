@@ -63,6 +63,32 @@ var getDriverSchedule = function (res) {
   });
 }
 
+//get user info on login
+var fetchUserData = (res, username) => {
+	var riderQuery = `SELECT * FROM rider WHERE username = '${username}'`
+	var driverQuery = `SELECT * FROM driver WHERE username = '${username}'`
+	var userType = null;
+	connection.query(driverQuery, (err, rows) => {
+		if (err) reject(err);
+		if (rows.length > 0) {
+			res.send(['driver', rows]);
+			res.end();
+		} else {
+			connection.query(riderQuery, (err, rows, fields) => {
+				if (err) reject(err);
+				if (rows.length > 0) {
+					res.send(['rider', rows]);
+					res.end();
+				} else {
+					res.send([]);
+					res.end;
+				}
+			});
+		}
+	});
+}
+
+module.exports.fetchUserData = fetchUserData;
 module.exports.registerDriver = registerDriver;
 module.exports.registerRider = registerRider;
 module.exports.registerDriverRide = registerDriverRide;

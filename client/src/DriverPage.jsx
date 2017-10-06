@@ -17,7 +17,7 @@ class DriverPage extends React.Component {
 	}
 
   componentDidMount() {
-    this.props.getRideSchdule();
+    this.props.getRideSchedule();
   }
 
 	updateDriverDate(e) {

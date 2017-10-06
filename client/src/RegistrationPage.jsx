@@ -77,10 +77,12 @@ class RegistrationPage extends React.Component {
 
   registerDriver() {
     this.props.saveDriver(this.state.username, this.state.car, this.state.license, this.state.seats, this.state.home, this.state.work, this.state.departureTime);
+    this.props.setUserPage('driver');
   }
 
   registerRider() {
     this.props.saveRider(this.state.username);
+    this.props.setUserPage('rider');
   }
   
   render () {
@@ -100,7 +102,7 @@ class RegistrationPage extends React.Component {
         License Number: <input onChange={this.updateLicense} value={this.state.license}></input>
         <br />
         Departure Time: <input onChange={this.updatedDepartureTime} defaultValue={this.state.departureTime} ></input>
-        <button onClick={this.registerDriver}>Register</button>
+        <button onClick={this.registerDriver} type="submit" name="driver">Register Driver</button>
         <br />
         <br />
         <br />
@@ -108,7 +110,7 @@ class RegistrationPage extends React.Component {
       <div>
         <h3>Rider Registration</h3>
         Name: <input onChange={this.updateUsername} value={this.state.username}></input>
-        <button onClick={this.registerRider}>Register</button>
+        <button onClick={this.registerRider} type="submit" name="rider">Register Rider</button>
       </div>
     </div>);
   }

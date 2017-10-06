@@ -30,6 +30,7 @@ class App extends React.Component {
     this.handleTime = this.handleTime.bind(this);
     this.handleStartPoint = this.handleStartPoint.bind(this);
     this.handleEndPoint = this.handleEndPoint.bind(this);
+    this.setUserPage = this.setUserPage.bind(this);
   }
 
 
@@ -46,6 +47,15 @@ class App extends React.Component {
     }
   }
   
+  setUserPage(type){
+    console.log('set user page');
+    if (type === 'driver') {
+      this.setState({page: 'driver', driver: true});
+    } else if (type === 'rider') {
+      this.setState({page: 'rider', rider: true});
+    }
+  }
+
   handleTime(e) {
 
 
@@ -76,6 +86,7 @@ class App extends React.Component {
   }
 
   saveRider(username) {
+    console.log('save rider');
     var riderInfo = { rider: username };
     $.ajax({
       method: 'POST',
@@ -137,10 +148,10 @@ class App extends React.Component {
             getName={this.getLogin}
           />
           : this.state.page === 'registration'
-            ? <RegistrationPage saveDriver={this.saveDriver} saveRider={this.saveRider} username={this.state.username} />
+            ? <RegistrationPage saveDriver={this.saveDriver} saveRider={this.saveRider} username={this.state.username} setUserPage={this.setUserPage}/>
             : this.state.page === 'driver'
-              ? <Driver driver={this.state.driver} getRideSchedule={this.getRideSchedule} schedule={this.state.schedule} />
-              : <Rider />
+              ? <DriverPage driver={this.state.driver} getRideSchedule={this.getRideSchedule} schedule={this.state.schedule} />
+              : <RiderPage />
        }
       </div>
     )

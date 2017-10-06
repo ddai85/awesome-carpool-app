@@ -50,7 +50,7 @@ class DriverPage extends React.Component {
         <form onSubmit={this.scheduleRide}>
         	<label>
           Date:
-          <input type="text" value={this.state.value} onChange={this.updateDriverDate} />
+          <input type="text" value={this.state.value} placeholder={'yyyy-mm-dd'} onChange={this.updateDriverDate} />
           </label>
           <label>
           Time:

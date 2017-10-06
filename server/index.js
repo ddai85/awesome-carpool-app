@@ -28,8 +28,7 @@ app.get('/driver', function (req, res) {
 
 app.post('/driver', function (req, res) {
   console.log('driver schedule posted', req.body);
-
-  res.send();
+  pools.registerDriverRide(req.body, res);
 });
 
 app.get('/rides', function (req, res) {
@@ -59,6 +58,10 @@ app.get('/registration', function (req, res) {
     }
   });
 });
+
+app.get('/login', (req, res) => {
+  pools.fetchUserData(res, req._parsedOriginalUrl.query);
+})
 
 app.post('/registration', function (req, res) {
   console.log('posted', req.body);

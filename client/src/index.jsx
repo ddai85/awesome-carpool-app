@@ -30,6 +30,7 @@ class App extends React.Component {
     this.handleTime = this.handleTime.bind(this);
     this.handleStartPoint = this.handleStartPoint.bind(this);
     this.handleEndPoint = this.handleEndPoint.bind(this);
+    this.checkUser = this.checkUser.bind(this);
     this.setUserPage = this.setUserPage.bind(this);
     this.postRideSchedule = this.postRideSchedule.bind(this);
   }
@@ -41,11 +42,48 @@ class App extends React.Component {
 
   getLogin (name, pass, registration) {
     this.setState({username: name, password: pass}, () => {
-      console.log('user state updated:', this.state.username)
+      this.checkUser();
     });
     if (registration) {
       this.renderRegistration();
+    } else {
     }
+  }
+  
+  checkUser() {
+    $.ajax({
+      method: 'GET',
+      url: '/login',
+      contentType: 'text/html',
+      data: this.state.username,
+      success: (data) => {
+        if (data !== []) {
+          if (data[0] === 'rider') {
+            console.log('Rider logged in');
+            this.setState({
+              rider: true,
+              page: 'rider'
+            })
+          }
+          if (data[0] === 'driver') {
+            var driver = data[1][0];
+            console.log(`${driver.username} is logged in as a driver.`);
+            this.setState({
+              driver: true,
+              car: driver.car,
+              home: driver.home,
+              work: driver.work,
+              departureTime: driver.departureTime,
+              seats: driver.seats,
+              page: 'driver'
+            })
+          }
+        }
+      },
+      error: (err) => {
+        console.log('err', err);
+      }
+    });
   }
   
   setUserPage(type){
@@ -144,10 +182,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="container-fluid">
-        {this.state.page === 'login'
-          ? <Navbar 
+          <Navbar 
             getName={this.getLogin}
           />
+        {this.state.page === 'login'
+          ? <div></div>
           : this.state.page === 'registration'
             ? <RegistrationPage saveDriver={this.saveDriver} saveRider={this.saveRider} username={this.state.username} setUserPage={this.setUserPage} />
             : this.state.page === 'driver'

@@ -11,7 +11,7 @@ class RiderPage extends React.Component {
       time: 'Time',
       pickup: 'Pickup Location',
       destination: 'Destination',
-      date: 'Date'
+      date: '2017-10-12'
     }
 
     this.setTime = this.setTime.bind(this);
@@ -28,7 +28,7 @@ class RiderPage extends React.Component {
       contentType: 'application/json',
       data: this.state,
       success: (data) => {
-        console.log('rides:', data);
+        console.log('rides:', JSON.stringify(data));
       },
       error: (err) => {
         console.log('err', err);
@@ -62,10 +62,10 @@ class RiderPage extends React.Component {
               {this.state.time}
               </button>
               <div className="dropdown-menu" aria-labelledby="dropdown-time">
-                <button onClick={this.setTime} className="dropdown-item btn-outline-light" type="button">7:00 am</button>
-                <button onClick={this.setTime} className="dropdown-item btn-outline-light" type="button">7:30 am</button>
-                <button onClick={this.setTime} className="dropdown-item btn-outline-light" type="button">8:00 am</button>
-                <button onClick={this.setTime} className="dropdown-item btn-outline-light" type="button">8:30 am</button>
+                <button onClick={this.setTime} className="dropdown-item btn-outline-light" type="button">7:00</button>
+                <button onClick={this.setTime} className="dropdown-item btn-outline-light" type="button">7:30</button>
+                <button onClick={this.setTime} className="dropdown-item btn-outline-light" type="button">8:00</button>
+                <button onClick={this.setTime} className="dropdown-item btn-outline-light" type="button">8:30</button>
               </div>
             </span>
 

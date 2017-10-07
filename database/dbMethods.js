@@ -90,25 +90,26 @@ var fetchUserData = (res, username) => {
 
 var getRideList = (req, res) => {
 	const ridesQuery = `
-		SELECT 
-			driver.username, 
-			driver.car, 
-			driver.seats, 
-			driver.home, 
-			driver.work, 
-			driver.departureTime, 
-			rides.departureDate, 
-			rides.rider* 
-		FROM 
-			driver, rides 
-		WHERE 
-			rides.departureDate = '${req.query.date}' 
-			AND driver.home = '${req.query.pickup}' 
-			AND driver.work = '${req.query.destination}' 
-			AND driver.departureTime = '${req.query.time}' 
-			AND driver.id = rides.driverID`;
-	connetion.query(ridesQuery, (err, data) => {
-		console.log(data);
+	SELECT 
+		driver.username, 
+		driver.car, 
+		driver.seats, 
+		rides.rider1, 
+		rides.rider2, 
+		rides.rider3, 
+		rides.rider4, 
+		rides.rider5, 
+		rides.rider6 
+	FROM driver, rides
+	WHERE 
+		driver.home = '${req.query.pickup}' 
+		AND rides.departureDate = '${req.query.date}' 
+		AND driver.work = '${req.query.destination}'
+		AND driver.departureTime = '${req.query.time}' 
+		AND driver.id = rides.driverID`;
+	connection.query(ridesQuery, (err, data) => {
+		res.send(data);
+		res.end();
 	});
 }
 

@@ -45,13 +45,41 @@ CREATE TABLE rides (
 );
 
 INSERT INTO driver (username, car, license, seats, home, work, departureTime)
-VALUES ('rebeccaPhares', 'BMW M3', '1HRB143', 3, 'Oakland', 'Hack Reactor', '08:00:00');
+VALUES ('alex', 'Toyota Camry', '8RNB401', 3, 'Oakland', 'Hack Reactor', '07:00:00');
 
 INSERT INTO driver (username, car, license, seats, home, work, departureTime)
-VALUES ('fredX', 'Tesla Model S', '1COD34U', 2, 'Oakland', 'Downtown', '08:00:00');
+VALUES ('kaila', 'Honda Accord', '7THT934', 2, 'Oakland', 'Downtown', '07:00:00');
+
+INSERT INTO driver (username, car, license, seats, home, work, departureTime)
+VALUES ('angel', 'Kia Optima', '3HRT114', 6, 'San Jose', 'Hack Reactor', '07:30:00');
+
+INSERT INTO driver (username, car, license, seats, home, work, departureTime)
+VALUES ('olaf', 'Toyota Sienna', '4GRU461', 2, 'San Jose', 'Downtown', '07:30:00');
+
+INSERT INTO driver (username, car, license, seats, home, work, departureTime)
+VALUES ('rebeccaPhares', 'Tesla Model X', '1HRB143', 3, 'Oakland', 'Hack Reactor', '08:00:00');
+
+INSERT INTO driver (username, car, license, seats, home, work, departureTime)
+VALUES ('fredX', 'BMW M3', '1COD34U', 2, 'Oakland', 'Downtown', '08:00:00');
 
 INSERT INTO driver (username, car, license, seats, home, work, departureTime)
 VALUES ('dannyT', 'Mercedes-Benz AMG C 63', '7ECH433', 2, 'San Jose', 'Hack Reactor', '08:00:00');
+
+INSERT INTO driver (username, car, license, seats, home, work, departureTime)
+VALUES ('alan', 'Mini Cooper', '5CNU039', 2, 'San Jose', 'Downtown', '08:00:00');
+
+INSERT INTO driver (username, car, license, seats, home, work, departureTime)
+VALUES ('jonathanLee', 'Toyota Camry', '0HOT123', 3, 'Oakland', 'Hack Reactor', '08:30:00');
+
+INSERT INTO driver (username, car, license, seats, home, work, departureTime)
+VALUES ('brianP', 'Honda CRV', '7VYN312', 2, 'Oakland', 'Downtown', '08:30:00');
+
+INSERT INTO driver (username, car, license, seats, home, work, departureTime)
+VALUES ('mary', 'Volkswagon Bus', '6MER100', 6, 'San Jose', 'Hack Reactor', '08:30:00');
+
+INSERT INTO driver (username, car, license, seats, home, work, departureTime)
+VALUES ('blake', 'Mini Cooper', '5CNU039', 2, 'San Jose', 'Downtown', '08:30:00');
+
 
 INSERT INTO rider (username) VALUES ('shiHao');
 INSERT INTO rider (username) VALUES ('jakeS');
@@ -63,8 +91,126 @@ INSERT INTO rider (username) VALUES ('kirk');
 
 
 INSERT INTO rides (driverID, driverName, rider1, rider2, rider3, departureDate) VALUES
-(1, 'rebeccaPhares', 1, 3, 5, '2017-10-10');
+(5, 'rebeccaPhares', 1, 3, 5, '2017-10-10');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(6, 'fredX', 2, '2017-10-10');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(7, 'dannyT', 6, '2017-10-10');
 INSERT INTO rides (driverID, driverName, rider1, rider2, departureDate) VALUES
-(2, 'fredX', 2, 4, '2017-10-12');
+(8, 'alan', 4, 7, '2017-10-10');
+INSERT INTO rides (driverID, driverName, rider1, rider2, rider3, departureDate) VALUES
+(1, 'alex', 1, 3, 5, '2017-10-10');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(2, 'kaila', 2, '2017-10-10');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(3, 'angel', 6, '2017-10-10');
 INSERT INTO rides (driverID, driverName, rider1, rider2, departureDate) VALUES
-(3, 'dannyT', 6, 7, '2017-10-11');
+(4, 'olaf', 4, 7, '2017-10-10');
+INSERT INTO rides (driverID, driverName, rider1, rider2, rider3, departureDate) VALUES
+(9, 'jonathanLee', 1, 3, 5, '2017-10-10');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(10, 'brianP', 2, '2017-10-10');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(11, 'mary', 6, '2017-10-10');
+INSERT INTO rides (driverID, driverName, rider1, rider2, departureDate) VALUES
+(12, 'blake', 4, 7, '2017-10-10');
+
+INSERT INTO rides (driverID, driverName, rider1, rider2, rider3, departureDate) VALUES
+(5, 'rebeccaPhares', 1, 3, 5, '2017-10-11');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(6, 'fredX', 2, '2017-10-11');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(7, 'dannyT', 6, '2017-10-11');
+INSERT INTO rides (driverID, driverName, rider1, rider2, departureDate) VALUES
+(8, 'alan', 4, 7, '2017-10-11');
+INSERT INTO rides (driverID, driverName, rider1, rider2, rider3, departureDate) VALUES
+(1, 'alex', 1, 3, 5, '2017-10-11');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(2, 'kaila', 2, '2017-10-11');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(3, 'angel', 6, '2017-10-11');
+INSERT INTO rides (driverID, driverName, rider1, rider2, departureDate) VALUES
+(4, 'olaf', 4, 7, '2017-10-11');
+INSERT INTO rides (driverID, driverName, rider1, rider2, rider3, departureDate) VALUES
+(9, 'jonathanLee', 1, 3, 5, '2017-10-11');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(10, 'brianP', 2, '2017-10-11');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(11, 'mary', 6, '2017-10-11');
+INSERT INTO rides (driverID, driverName, rider1, rider2, departureDate) VALUES
+(12, 'blake', 4, 7, '2017-10-11');
+
+INSERT INTO rides (driverID, driverName, rider1, rider2, rider3, departureDate) VALUES
+(5, 'rebeccaPhares', 1, 3, 5, '2017-10-12');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(6, 'fredX', 2, '2017-10-12');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(7, 'dannyT', 6, '2017-10-12');
+INSERT INTO rides (driverID, driverName, rider1, rider2, departureDate) VALUES
+(8, 'alan', 4, 7, '2017-10-12');
+INSERT INTO rides (driverID, driverName, rider1, rider2, rider3, departureDate) VALUES
+(1, 'alex', 1, 3, 5, '2017-10-12');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(2, 'kaila', 2, '2017-10-12');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(3, 'angel', 6, '2017-10-12');
+INSERT INTO rides (driverID, driverName, rider1, rider2, departureDate) VALUES
+(4, 'olaf', 4, 7, '2017-10-12');
+INSERT INTO rides (driverID, driverName, rider1, rider2, rider3, departureDate) VALUES
+(9, 'jonathanLee', 1, 3, 5, '2017-10-12');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(10, 'brianP', 2, '2017-10-12');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(11, 'mary', 6, '2017-10-12');
+INSERT INTO rides (driverID, driverName, rider1, rider2, departureDate) VALUES
+(12, 'blake', 4, 7, '2017-10-12');
+
+INSERT INTO rides (driverID, driverName, rider1, rider2, rider3, departureDate) VALUES
+(5, 'rebeccaPhares', 1, 3, 5, '2017-10-13');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(6, 'fredX', 2, '2017-10-13');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(7, 'dannyT', 6, '2017-10-13');
+INSERT INTO rides (driverID, driverName, rider1, rider2, departureDate) VALUES
+(8, 'alan', 4, 7, '2017-10-13');
+INSERT INTO rides (driverID, driverName, rider1, rider2, rider3, departureDate) VALUES
+(1, 'alex', 1, 3, 5, '2017-10-13');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(2, 'kaila', 2, '2017-10-13');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(3, 'angel', 6, '2017-10-13');
+INSERT INTO rides (driverID, driverName, rider1, rider2, departureDate) VALUES
+(4, 'olaf', 4, 7, '2017-10-13');
+INSERT INTO rides (driverID, driverName, rider1, rider2, rider3, departureDate) VALUES
+(9, 'jonathanLee', 1, 3, 5, '2017-10-13');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(10, 'brianP', 2, '2017-10-13');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(11, 'mary', 6, '2017-10-13');
+INSERT INTO rides (driverID, driverName, rider1, rider2, departureDate) VALUES
+(12, 'blake', 4, 7, '2017-10-13');
+
+INSERT INTO rides (driverID, driverName, rider1, rider2, rider3, departureDate) VALUES
+(5, 'rebeccaPhares', 1, 3, 5, '2017-10-14');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(6, 'fredX', 2, '2017-10-14');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(7, 'dannyT', 6, '2017-10-14');
+INSERT INTO rides (driverID, driverName, rider1, rider2, departureDate) VALUES
+(8, 'alan', 4, 7, '2017-10-14');
+INSERT INTO rides (driverID, driverName, rider1, rider2, rider3, departureDate) VALUES
+(1, 'alex', 1, 3, 5, '2017-10-14');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(2, 'kaila', 2, '2017-10-14');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(3, 'angel', 6, '2017-10-14');
+INSERT INTO rides (driverID, driverName, rider1, rider2, departureDate) VALUES
+(4, 'olaf', 4, 7, '2017-10-14');
+INSERT INTO rides (driverID, driverName, rider1, rider2, rider3, departureDate) VALUES
+(9, 'jonathanLee', 1, 3, 5, '2017-10-14');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(10, 'brianP', 2, '2017-10-14');
+INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
+(11, 'mary', 6, '2017-10-14');
+INSERT INTO rides (driverID, driverName, rider1, rider2, departureDate) VALUES
+(12, 'blake', 4, 7, '2017-10-14');

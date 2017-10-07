@@ -45,13 +45,13 @@ CREATE TABLE rides (
 )
 
 INSERT INTO driver (username, car, license, seats, home, work, departureTime)
-VALUES ('rebeccaPhares', 'BMW M3', '1HRB143', 3, 'Oakland', 'Hack Reactor', 08:00:00);
+VALUES ('rebeccaPhares', 'BMW M3', '1HRB143', 3, 'Oakland', 'Hack Reactor', '08:00:00');
 
 INSERT INTO driver (username, car, license, seats, home, work, departureTime)
-VALUES ('fredX', 'Tesla Model S', '1COD34U', 2, 'Oakland', 'Downtown', 08:00:00);
+VALUES ('fredX', 'Tesla Model S', '1COD34U', 2, 'Oakland', 'Downtown', '08:00:00');
 
 INSERT INTO driver (username, car, license, seats, home, work, departureTime)
-VALUES ('dannyT', 'Mercedes-Benz AMG C 63', '7ECH433', 2, 'San Jose'. 'Hack Reactor', 08:00:00);
+VALUES ('dannyT', 'Mercedes-Benz AMG C 63', '7ECH433', 2, 'San Jose', 'Hack Reactor', '08:00:00');
 
 INSERT INTO rider (username) VALUES ('shiHao');
 INSERT INTO rider (username) VALUES ('jakeS');
@@ -62,9 +62,9 @@ INSERT INTO rider (username) VALUES ('ian');
 INSERT INTO rider (username) VALUES ('kirk');
 
 
-INSERT INTO rides (driverID, driverName, rider1, rider2, rider3) VALUES
-(1, 'rebeccaPhares', 1, 3, 5);
-INSERT INTO rides (driverID, driverName, rider1, rider2, rider3) VALUES
-(2, 'fredX', 2, 4);
-INSERT INTO rides (driverID, driverName, rider1, rider2, rider3) VALUES
-(3, 'dannyT', 6, 7);
+INSERT INTO rides (driverID, driverName, rider1, rider2, rider3, departureDate) VALUES
+(1, 'rebeccaPhares', 1, 3, 5, '2017-10-07');
+INSERT INTO rides (driverID, driverName, rider1, rider2, departureDate) VALUES
+(2, 'fredX', 2, 4, '2017-10-08');
+INSERT INTO rides (driverID, driverName, rider1, rider2, departureDate) VALUES
+(3, 'dannyT', 6, 7, '2017-10-09');

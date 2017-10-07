@@ -33,6 +33,7 @@ class App extends React.Component {
     this.checkUser = this.checkUser.bind(this);
     this.setUserPage = this.setUserPage.bind(this);
     this.postRideSchedule = this.postRideSchedule.bind(this);
+    this.getRideSchedule = this.getRideSchedule.bind(this);
   }
 
 
@@ -144,15 +145,19 @@ class App extends React.Component {
   //get request to '/rides' endpoint?
   //query rides database
   //set schedule in state to data received from get request
-  getRideSchedule() {
+  getRideSchedule(username) {
+    console.log('username', username);
+    var driver = {driverName: username};
     $.ajax({
       method: 'GET',
       url: '/rides', 
+      contentType: 'application/json',
+      data: driver,
       success: (data) => {
-        console.log('success');
-        this.setState({
-          schedule: data
-        })
+        console.log('success', data);
+        // this.setState({
+        //   schedule: data
+        // })
       },
       error: (err) => {
         console.log('error', err);

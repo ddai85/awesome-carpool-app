@@ -52,14 +52,62 @@ var registerDriverRide = function(driverInfo, res) {
 }
 
 //get list of riders for driver pool date when logging into driver
-var getDriverSchedule = function (res) {
+var getDriverSchedule = function (driverName, res) {
 	console.log('getDriverSchedule db method');
-	connection.query('SELECT date, rider1', function(err, results, fields) {
+	connection.query(`SELECT departureDate from rides where driverName = '${driverName.driverName}'`, function(err, departureDate, fields) {
   	if (err) {
   		res.send(err);
   	}
-  	console.log("results", results);
-  	res.send();
+  	console.log("departure date", departureDate);
+  	connection.query(`SELECT home from driver where username = '${driverName.driverName}'`, function(err, home, fields) {
+	  	if (err) {
+	  		res.send(err);
+	  	}
+	  	console.log("home", home);
+	  	connection.query(`SELECT work from driver where username = '${driverName.driverName}'`, function(err, work, fields) {
+		  	if (err) {
+		  		res.send(err);
+		  	}
+		  	console.log("work", work);
+		    connection.query(`SELECT username from rider, rides where rides.driverName = '${driverName.driverName}' and rider.id = rides.rider1;`, function(err, rider1, fields) {
+			  	if (err) {
+			  		res.send(err);
+			  	}
+			  	console.log("rider1", rider1);
+			    connection.query(`SELECT username from rider, rides where rides.driverName = '${driverName.driverName}' and rider.id = rides.rider2;`, function(err, rider2, fields) {
+				  	if (err) {
+				  		res.send(err);
+				  	}
+				  	console.log("rider2", rider2);
+				  	connection.query(`SELECT username from rider, rides where rides.driverName = '${driverName.driverName}' and rider.id = rides.rider3;`, function(err, rider3, fields) {
+					  	if (err) {
+					  		res.send(err);
+					  	}
+					  	console.log("rider3", rider3);
+					  	connection.query(`SELECT username from rider, rides where rides.driverName = '${driverName.driverName}' and rider.id = rides.rider4;`, function(err, rider4, fields) {
+						  	if (err) {
+						  		res.send(err);
+						  	}
+						  	console.log("rider4", rider4);
+						  	connection.query(`SELECT username from rider, rides where rides.driverName = '${driverName.driverName}' and rider.id = rides.rider5;`, function(err, rider5, fields) {
+							  	if (err) {
+							  		res.send(err);
+							  	}
+							  	console.log("rider5", rider5);
+							  	connection.query(`SELECT username from rider, rides where rides.driverName = '${driverName.driverName}' and rider.id = rides.rider6;`, function(err, rider6, fields) {
+								  	if (err) {
+								  		res.send(err);
+								  	}
+								  	console.log("rider6", rider6);
+								  	res.send([departureDate, home, work, rider1, rider2, rider3, rider4, rider5, rider6]);
+						  	  });
+					  	  });
+				  	  });
+			  	  });
+		  	  });
+	  	  });
+  	  });
+  	});
   });
 }
 

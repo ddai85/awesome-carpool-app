@@ -32,8 +32,8 @@ app.post('/driver', function (req, res) {
 });
 
 app.get('/rides', function (req, res) {
-  console.log('driver rides get');
-  // pools.getDriverSchedule(res);
+  console.log('driver rides get', req.query);
+  pools.getDriverSchedule(req.query, res);
 });
 
 app.get('/rider', function (req, res) {

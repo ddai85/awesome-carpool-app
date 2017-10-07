@@ -8,13 +8,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
 
-app.use(express.static(__dirname + '/../client/src'));
+
 app.use(express.static(__dirname + '/../client/dist'))
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
 app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'));
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use('/bin', express.static(__dirname + '/../client/bin'));
-
 
 
 app.get('/driver', function (req, res) {
@@ -28,11 +27,8 @@ app.get('/driver', function (req, res) {
 });
 
 app.post('/driver', function (req, res) {
-
-
-	let driverId = req.body.driverId;
-	let description = req.body.description;
-
+  console.log('driver schedule posted', req.body);
+  pools.registerDriverRide(req.body, res);
 });
 
 app.get('/rides', function (req, res) {
@@ -63,8 +59,18 @@ app.get('/registration', function (req, res) {
   });
 });
 
-app.post('/registration', function (req, res) {
+app.get('/login', (req, res) => {
+  pools.fetchUserData(res, req._parsedOriginalUrl.query);
+})
 
+app.post('/registration', function (req, res) {
+  console.log('posted', req.body);
+  if(req.body.hasOwnProperty('driver')) {
+    pools.registerDriver(req.body, res);
+  } else if(req.body.hasOwnProperty('rider')) {
+    pools.registerRider(req.body, res);
+  }
+  //res sent in database methods
 });
 
 

@@ -14,14 +14,19 @@ class DriverPage extends React.Component {
 		this.updateDriverDate = this.updateDriverDate.bind(this);
 		// this.updateDriverTime = this.updateDriverTime.bind(this);
 		this.scheduleRide = this.scheduleRide.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
 	}
 
   componentDidMount() {
-    this.props.getRideSchedule();
     this.setState({
       username: this.props.username,
       departureTime: this.props.departureTime
     });
+  }
+
+  componentDidUpdate() {
+    console.log('updated component', this.state.username);
+    this.props.getRideSchedule(this.state.username);
   }
 
 	updateDriverDate(e) {

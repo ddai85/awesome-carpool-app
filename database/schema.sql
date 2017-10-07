@@ -33,7 +33,7 @@ CREATE TABLE rides (
   rider4 INT,
   rider5 INT,
   rider6 INT,
-  departureDate DATE NOT NULL,
+  departureDate DATE,
   PRIMARY KEY (id),
   FOREIGN KEY(driverID) REFERENCES driver(id),
   FOREIGN KEY(rider1) REFERENCES rider(id),

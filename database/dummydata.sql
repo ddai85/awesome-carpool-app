@@ -33,7 +33,7 @@ CREATE TABLE rides (
   rider4 INT,
   rider5 INT,
   rider6 INT,
-  departureDate DATE NOT NULL,
+  departureDate DATE,
   PRIMARY KEY (id),
   FOREIGN KEY(driverID) REFERENCES driver(id),
   FOREIGN KEY(rider1) REFERENCES rider(id),
@@ -42,7 +42,7 @@ CREATE TABLE rides (
   FOREIGN KEY(rider4) REFERENCES rider(id),
   FOREIGN KEY(rider5) REFERENCES rider(id),
   FOREIGN KEY(rider6) REFERENCES rider(id)
-)
+);
 
 INSERT INTO driver (username, car, license, seats, home, work, departureTime)
 VALUES ('rebeccaPhares', 'BMW M3', '1HRB143', 3, 'Oakland', 'Hack Reactor', '08:00:00');

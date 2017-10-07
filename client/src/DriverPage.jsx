@@ -8,16 +8,25 @@ class DriverPage extends React.Component {
 		super(props);
 		this.state = {
       username: '',
-			departureDate: '',
-      // departureTime: '8:00:00'
+      departureTime: '',
+      departureDate: ''
 		};
 		this.updateDriverDate = this.updateDriverDate.bind(this);
 		// this.updateDriverTime = this.updateDriverTime.bind(this);
 		this.scheduleRide = this.scheduleRide.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
 	}
 
   componentDidMount() {
-    this.props.getRideSchedule();
+    this.setState({
+      username: this.props.username,
+      departureTime: this.props.departureTime
+    });
+  }
+
+  componentDidUpdate() {
+    console.log('updated component', this.state.username);
+    this.props.getRideSchedule(this.state.username);
   }
 
 	updateDriverDate(e) {
@@ -33,9 +42,11 @@ class DriverPage extends React.Component {
   //   });
   // }
 
-	scheduleRide() {
+	scheduleRide(event) {
     //add this.props.departureTime for future integration
-    this.props.postRideSchedule(this.props.driver, this.state.departureDate);
+    event.preventDefault();
+    alert('Schedule confirmed');
+    this.props.postRideSchedule(this.props.username, this.state.departureDate);
   }
 
 	render() {
@@ -44,11 +55,11 @@ class DriverPage extends React.Component {
         <form onSubmit={this.scheduleRide}>
         	<label>
           Date:
-          <input type="text" value={this.state.value} onChange={this.updateDriverDate} />
+          <input type="text" value={this.state.value} placeholder={'yyyy-mm-dd'} onChange={this.updateDriverDate} />
           </label>
           <label>
           Time:
-          <input type="text" defaultValue={this.state.value} onChange={this.updateDriverTime} />
+          <input type="text" value={this.state.departureTime} onChange={this.updateDriverTime} />
           </label>
         	<input type="submit" value="Submit" />
       	</form>

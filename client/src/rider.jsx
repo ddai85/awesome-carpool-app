@@ -12,7 +12,8 @@ class RiderPage extends React.Component {
       time: 'Time',
       pickup: 'Pickup Location',
       destination: 'Destination',
-      date: '2017-10-12'
+      date: '2017-10-12',
+      rides: []
     }
 
     this.setTime = this.setTime.bind(this);
@@ -38,6 +39,7 @@ class RiderPage extends React.Component {
       data: this.state,
       success: (data) => {
         console.log('rides:', JSON.stringify(data));
+        this.setState({rides: data});
       },
       error: (err) => {
         console.log('err', err);
@@ -106,7 +108,7 @@ class RiderPage extends React.Component {
           </form>
         </nav>
         <Calendar setDate={this.setDate}/>
-        {/* <RideList /> */}
+        <RideList rides={this.state.rides}/>
       </div>
     )
   }

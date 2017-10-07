@@ -18,9 +18,11 @@ class App extends React.Component {
       driver: false,
       home: '',
       work: '',
+      departureDate: '',
       departureTime: '08:00:00',
       car: '',
       seats: 0,
+      upcomingRideDate: '',
       schedule: [] // schedule will contain rideId#'s that refer to entries in the rides join table
       //edited state variable names to match mysql database fields
     }

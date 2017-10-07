@@ -1,6 +1,7 @@
 import React from 'react';
 import RideList from './RideList.jsx';
 import $ from 'jquery'
+import Calendar from './Calendar.jsx';
 
 
 class RiderPage extends React.Component {
@@ -18,6 +19,14 @@ class RiderPage extends React.Component {
     this.setDestination = this.setDestination.bind(this);
     this.setHome = this.setHome.bind(this);
     this.findRides = this.findRides.bind(this);
+    this.setDate = this.setDate.bind(this);
+  }
+
+  setDate(selection) {
+    var newDate = JSON.stringify(selection).slice(1,11);
+    this.setState({
+      date: newDate
+    });
   }
 
   findRides(event) {
@@ -88,11 +97,15 @@ class RiderPage extends React.Component {
                 <button onClick={this.setDestination} className="dropdown-item btn-outline-light" type="button">Hack Reactor</button>
               </div>
             </span>
-            <button onClick={this.findRides} className="btn btn-outline-light">Search
-              
+
+            <button className="btn btn-outline-light" type="button">
+              {this.state.date}
             </button>
+
+            <button onClick={this.findRides} className="btn btn-outline-light">Search</button>
           </form>
         </nav>
+        <Calendar setDate={this.setDate}/>
         {/* <RideList /> */}
       </div>
     )

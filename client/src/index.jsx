@@ -36,6 +36,7 @@ class App extends React.Component {
     this.setUserPage = this.setUserPage.bind(this);
     this.postRideSchedule = this.postRideSchedule.bind(this);
     this.getRideSchedule = this.getRideSchedule.bind(this);
+    this.updateRideSchedule - this.updateRideSchedule.bind(this);
   }
 
 
@@ -157,13 +158,21 @@ class App extends React.Component {
       data: driver,
       success: (data) => {
         console.log('success', data);
-        // this.setState({
-        //   schedule: data
-        // })
+        this.updateRideSchedule(data);
       },
       error: (err) => {
         console.log('error', err);
       }
+    });
+  }
+
+  updateRideSchedule(schedule) {
+    let nextDate = schedule[0].departureDate.slice(0, 10); 
+    schedule.shift();
+    var riders = schedule.map(rider => rider.username);
+    this.setState({
+      departureDate: nextDate,
+      schedule: riders
     });
   }
   
@@ -197,7 +206,7 @@ class App extends React.Component {
           : this.state.page === 'registration'
             ? <RegistrationPage saveDriver={this.saveDriver} saveRider={this.saveRider} username={this.state.username} setUserPage={this.setUserPage} />
             : this.state.page === 'driver'
-              ? <DriverPage username={this.state.username} departureTime={this.state.departureTime} getRideSchedule={this.getRideSchedule} postRideSchedule={this.postRideSchedule} schedule={this.state.schedule} />
+              ? <DriverPage username={this.state.username} departureTime={this.state.departureTime} getRideSchedule={this.getRideSchedule} postRideSchedule={this.postRideSchedule} departureDate={this.state.departureDate} schedule={this.state.schedule} />
               : <RiderPage />
        }
       </div>

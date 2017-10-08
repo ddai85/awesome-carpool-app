@@ -22,11 +22,8 @@ class DriverPage extends React.Component {
       username: this.props.username,
       departureTime: this.props.departureTime
     });
-  }
-
-  componentDidUpdate() {
-    console.log('updated component', this.state.username);
-    this.props.getRideSchedule(this.state.username);
+    console.log('component did mount', this.props.username);
+    this.props.getRideSchedule(this.props.username);
   }
 
 	updateDriverDate(e) {
@@ -63,6 +60,12 @@ class DriverPage extends React.Component {
           </label>
         	<input type="submit" value="Submit" />
       	</form>
+        <br />
+        <h5>Your next scheduled ride:</h5>
+        <div className="departure-date">{this.props.departureDate}</div>
+        <br/ >
+        <h5>Your passengers:</h5>
+        <div className="rider-list">{this.props.schedule.map((rider, index) => <div key={index}>{rider}</div>)}</div>
 		  </div>
     )
   }

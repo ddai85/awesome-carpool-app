@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Map = (props) => (
-  <span>
+  <div className="col-sm-7">
     <img className="map" src={`../bin/route ${props.route}.png`} />}
-  </span>
+  </div>
 )
   
 export default Map;

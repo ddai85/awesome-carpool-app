@@ -29,6 +29,7 @@ class DriverPage extends React.Component {
     this.props.getRideSchedule(this.props.username);
   }
 
+
   //update driver time on the driver page will be a future integration
   // updateDriverTime(event) {
   //   var time = event.target.innerHTML;

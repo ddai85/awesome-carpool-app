@@ -28,6 +28,7 @@ class RegistrationPage extends React.Component {
     this.registerRider = this.registerRider.bind(this);
   }
 
+
   componentDidMount(){
     this.setState({
       username: this.props.username

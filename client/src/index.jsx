@@ -40,6 +40,7 @@ class App extends React.Component {
   }
 
 
+
   renderRegistration () {
     this.setState({page: 'registration'});
   }
@@ -53,6 +54,7 @@ class App extends React.Component {
     } else {
     }
   }
+  
   
   checkUser() {
     $.ajax({

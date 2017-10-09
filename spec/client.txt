@@ -9,18 +9,18 @@ Component List
       either a rider or a driver page based on their previously registered information. If they do not exist in the database or they click on the
       register button, they will be routed to the registration page.
 
-        **** TODO ****
-        1) Redux Refactor
-        2) React Router Refactor 
+      **** TODO ****
+      1) Redux Refactor
+      2) React Router Refactor 
 
   Second Level:
     Navbar.jsx
       This component is the only one that is visible on every page. It collects user login data and queries the server to display appropriate information
       for the current user.
 
-        **** TODO ****
-        1) Logout button 
-        2) Secure login
+      **** TODO ****
+      1) Logout button 
+      2) Secure login
 
     RegistrationPage.jsx
       This page contains the forms for collecting a new user's information. Once a user has submitted their information they are routed to the
@@ -31,17 +31,17 @@ Component List
       show currently selected route as well as upcoming rides they are signed up for to display who has signed up to carpool with them on that
       day.
 
-        **** TODO ****
-        1) Implement ability to toggle through upcoming rides
-        2) Implement ability to register for multiple day blocks in one submission
+      **** TODO ****
+      1) Implement ability to toggle through upcoming rides
+      2) Implement ability to register for multiple day blocks in one submission
 
     rider.jsx
       This page contains the interface for riders to search for available carpool rides on a specified route on a selected day and time. It contains
       displays for the route and the available carpools for their current selection.
 
-        **** TODO ****
-        1) Showing rides that are full as greyed out
-        2) Showing a message when there are no rides for the search query entered
+      **** TODO ****
+      1) Showing rides that are full as greyed out
+      2) Showing a message when there are no rides for the search query entered
 
   Third Level:
     Calendar.jsx

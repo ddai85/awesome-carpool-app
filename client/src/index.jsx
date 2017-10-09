@@ -19,7 +19,7 @@ class App extends React.Component {
       home: '',
       work: '',
       departureDate: '',
-      departureTime: '08:00:00',
+      departureTime: '',
       car: '',
       seats: 0,
       upcomingRideDate: '',
@@ -115,6 +115,7 @@ class App extends React.Component {
   }
 
   saveDriver(username, car, license, seats, home, work, departureTime) {
+    console.log(departureTime, 'save driver');
     var driverInfo = { driver: username, car: car, license: license, seats: seats, home: home, work: work, departureTime: departureTime };
     $.ajax({
       method: 'POST',

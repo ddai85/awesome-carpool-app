@@ -25,6 +25,21 @@ body {
   margin-left: 17px;
 }
 
+h5 {
+  color: white;
+  margin-left: 17px;
+}
+
+.departure-date {
+  color: white;
+  margin-left: 17px;
+}
+
+.rider-list {
+  color: white;
+  margin-left: 17px;
+}
+
 .text {
   color: white;
 }

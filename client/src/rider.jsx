@@ -2,6 +2,7 @@ import React from 'react';
 import RideList from './RideList.jsx';
 import $ from 'jquery'
 import Calendar from './Calendar.jsx';
+import Map from './Map.jsx';
 
 
 class RiderPage extends React.Component {
@@ -12,6 +13,7 @@ class RiderPage extends React.Component {
       time: 'Time',
       pickup: 'Pickup Location',
       destination: 'Destination',
+      route: 0,
       date: 'Date',
       rides: []
     }
@@ -22,6 +24,7 @@ class RiderPage extends React.Component {
     this.findRides = this.findRides.bind(this);
     this.setDate = this.setDate.bind(this);
     this.bookRide = this.bookRide.bind(this);
+    this.setRoute = this.setRoute.bind(this);
   }
 
   bookRide(event) {
@@ -74,12 +77,32 @@ class RiderPage extends React.Component {
 
   setHome(event) {
     var start = event.target.innerHTML;
-    this.setState({pickup: start});
+    this.setState({pickup: start}, this.setRoute);
   }
 
   setDestination(event) {
     var dest = event.target.innerHTML;
-    this.setState({destination: dest});
+    this.setState({destination: dest}, this.setRoute);
+  }
+
+  // set a numerical route number to correspond to a given pre-rendered route map in lieu of
+  // functional map api
+  setRoute() {
+    console.log('setting route...');
+    if (this.state.pickup === 'Oakland') {
+      if (this.state.destination === 'Hack Reactor') {
+        this.setState({route: 1});
+      } else if (this.state.destination === 'Downtown') {
+        this.setState({route: 2});
+      }
+    }
+    if (this.state.pickup === 'San Jose') {
+      if (this.state.destination === 'Hack Reactor') {
+        this.setState({route: 3});
+      } else if (this.state.destination === 'Downtown') {
+        this.setState({route: 4});
+      }
+    }
   }
 
   render() {
@@ -128,6 +151,7 @@ class RiderPage extends React.Component {
           </form>
         </nav>
         <Calendar setDate={this.setDate}/>
+        <Map route={this.state.route}/>
         <RideList rides={this.state.rides} bookRide={this.bookRide}/>
       </div>
     )

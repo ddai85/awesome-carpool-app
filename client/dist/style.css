@@ -40,6 +40,16 @@ h5 {
   margin-left: 17px;
 }
 
+.pickup {
+  color: white;
+  margin-left: 17px;
+}
+
+.destination {
+  color: white;
+  margin-left: 17px;
+}
+
 .text {
   color: white;
 }

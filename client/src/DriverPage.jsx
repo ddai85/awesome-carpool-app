@@ -65,11 +65,12 @@ class DriverPage extends React.Component {
         <Calendar setDate={this.setDate}/>
         <br />
         <h5>Your next scheduled ride:</h5>
-        <div className="departure-date">{this.props.departureDate + ' ' + '8:00 AM'}</div>
+        <div className="departure-date">Date:  {this.props.departureDate + ' ' + '8:00 AM'}</div>
+        <div className="pickup">Pickup Location:  {this.props.home}</div>
+        <div className="destination">Destination:  {this.props.work}</div>
         <br/ >
         <h5>Your passengers:</h5>
         <div className="rider-list">{this.props.schedule.map((rider, index) => <div key={index}>{rider}</div>)}</div>
-        <br/ >
         <br/ >
         <br/ >
       </div>

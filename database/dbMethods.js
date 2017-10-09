@@ -51,40 +51,47 @@ var registerDriverRide = function(driverInfo, res) {
 	});
 }
 
+// WHERE EVENT_START_DATE > NOW() 
+// ORDER BY EVENT_START_DATE 
+// LIMIT 3 
+
 //get list of riders for driver pool date when logging into driver
 var getDriverSchedule = function (driverName, res) {
 	console.log('getDriverSchedule db method');
-	connection.query(`SELECT departureDate from rides where driverName = '${driverName.driverName}'`, function(err, departureDate, fields) {
+	connection.query(`SELECT departureDate from rides where driverName = '${driverName.driverName}' and departureDate >= CURDATE() order by departureDate limit 1;`, function(err, departureDate, fields) {
   	if (err) {
   		res.send(err);
-  	}
-  	console.log("departure date", departureDate);
-    connection.query(`SELECT username from rider, rides where rides.driverName = '${driverName.driverName}' and rider.id = rides.rider1;`, function(err, rider1, fields) {
+  	} 
+  	else if(departureDate.length !== 0) {
+  		var modifiedDate = JSON.stringify(departureDate[0].departureDate).slice(1, 11);
+  		console.log(modifiedDate);
+    }
+    connection.query(`SELECT username from rider, rides where rides.driverName = '${driverName.driverName}' and rider.id = rides.rider1 and rides.departureDate = '${modifiedDate}';`, function(err, rider1, fields) {
 	  	if (err) {
 	  		res.send(err);
 	  	}
 	  	console.log("rider1", rider1);
-	    connection.query(`SELECT username from rider, rides where rides.driverName = '${driverName.driverName}' and rider.id = rides.rider2;`, function(err, rider2, fields) {
+	    connection.query(`SELECT username from rider, rides where rides.driverName = '${driverName.driverName}' and rider.id = rides.rider2 and rides.departureDate = '${modifiedDate}';`, function(err, rider2, fields) {
 		  	if (err) {
 		  		res.send(err);
 		  	}
 		  	console.log("rider2", rider2);
-		  	connection.query(`SELECT username from rider, rides where rides.driverName = '${driverName.driverName}' and rider.id = rides.rider3;`, function(err, rider3, fields) {
+		  	connection.query(`SELECT username from rider, rides where rides.driverName = '${driverName.driverName}' and rider.id = rides.rider3 and rides.departureDate = '${modifiedDate}';`, function(err, rider3, fields) {
 			  	if (err) {
 			  		res.send(err);
 			  	}
 			  	console.log("rider3", rider3);
-			  	connection.query(`SELECT username from rider, rides where rides.driverName = '${driverName.driverName}' and rider.id = rides.rider4;`, function(err, rider4, fields) {
+			  	connection.query(`SELECT username from rider, rides where rides.driverName = '${driverName.driverName}' and rider.id = rides.rider4 and rides.departureDate = '${modifiedDate}';`, function(err, rider4, fields) {
 				  	if (err) {
 				  		res.send(err);
 				  	}
 				  	console.log("rider4", rider4);
-				  	connection.query(`SELECT username from rider, rides where rides.driverName = '${driverName.driverName}' and rider.id = rides.rider5;`, function(err, rider5, fields) {
+				  	connection.query(`SELECT username from rider, rides where rides.driverName = '${driverName.driverName}' and rider.id = rides.rider5 and rides.departureDate = '${modifiedDate}';`, function(err, rider5, fields) {
 					  	if (err) {
 					  		res.send(err);
 					  	}
 					  	console.log("rider5", rider5);
-					  	connection.query(`SELECT username from rider, rides where rides.driverName = '${driverName.driverName}' and rider.id = rides.rider6;`, function(err, rider6, fields) {
+					  	connection.query(`SELECT username from rider, rides where rides.driverName = '${driverName.driverName}' and rider.id = rides.rider6 and rides.departureDate = '${modifiedDate}';`, function(err, rider6, fields) {
 						  	if (err) {
 						  		res.send(err);
 						  	}

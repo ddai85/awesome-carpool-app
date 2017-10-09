@@ -210,7 +210,7 @@ class App extends React.Component {
             ? <RegistrationPage saveDriver={this.saveDriver} saveRider={this.saveRider} username={this.state.username} setUserPage={this.setUserPage} />
             : this.state.page === 'driver'
 
-              ? <DriverPage username={this.state.username} departureTime={this.state.departureTime} getRideSchedule={this.getRideSchedule} postRideSchedule={this.postRideSchedule} departureDate={this.state.departureDate} schedule={this.state.schedule} />
+              ? <DriverPage username={this.state.username} departureTime={this.state.departureTime} getRideSchedule={this.getRideSchedule} postRideSchedule={this.postRideSchedule} departureDate={this.state.departureDate} home={this.state.home} work={this.state.work} schedule={this.state.schedule} />
               : <RiderPage rider={this.state.username}/>
        }
       </div>

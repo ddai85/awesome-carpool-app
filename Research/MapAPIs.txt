@@ -10,4 +10,7 @@ Mapbox
 
 
 Google Maps
-  - 
+  Oakland Casual Carpool pickup location - 1701-1711 Oakland Ave, Piedmont, CA 94611
+  Hack Reactor - 944 Market street
+  Downtown - 700 4th St, San Francisco, CA 94107
+  San Jose - auto pin when entering San Jose

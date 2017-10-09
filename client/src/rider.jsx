@@ -12,7 +12,7 @@ class RiderPage extends React.Component {
       time: 'Time',
       pickup: 'Pickup Location',
       destination: 'Destination',
-      date: '2017-10-12',
+      date: 'Date',
       rides: []
     }
 
@@ -35,6 +35,7 @@ class RiderPage extends React.Component {
       data: JSON.stringify({rider: this.state.name, ride: this.state.rides[rideIndex]}),
       success: (data) => {
         console.log(data);
+        alert(`Your ride with ${this.state.rides[rideIndex].username} has been booked!`)
       },
       error: (err) => {
         console.log('Error', err);

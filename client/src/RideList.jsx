@@ -6,7 +6,11 @@ const RideList = (props) => (
     {props.rides.map((rideObj, index) => {
       // check if ride is full
       if (rideObj[`rider${rideObj.seats}`] === null) {
-        return <button onClick={props.bookRide} key={index.toString()} className="btn btn-outline-light">{`${index + 1}: ${rideObj.username}'s ${rideObj.car}`}</button>
+        return (
+        <div>
+          <button onClick={props.bookRide} key={index.toString()} className="btn btn-outline-light">{`${index + 1}: ${rideObj.username}'s ${rideObj.car}`}</button>
+        </div>
+        )
       }
     }) }
   </div>

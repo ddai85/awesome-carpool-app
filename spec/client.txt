@@ -1,5 +1,72 @@
-var login = require('../client/src/login');
-var reg = require('../client/src/registrationPage');
-var rider = require('../client/src/rider');
-var driver = require('../client/src/driverPage');
-var index = require('../client/src/index');
+The client is written in react and uses bootstrap 4 for styling.
+
+Component List
+  Top Level:
+    index.jsx
+      index.jsx contains the entrypoint for the app and contains the initial login state which ultimately determines which page you are routed to.
+      It contains a login navbar which will take a user's login credentials and determine which view needs to be rendered. It uses a ternary render
+      statement to determine which page to render based on the state returned by the DB query. If a user exists in the database it will render
+      either a rider or a driver page based on their previously registered information. If they do not exist in the database or they click on the
+      register button, they will be routed to the registration page.
+
+      **** TODO ****
+      1) Redux Refactor
+      2) React Router Refactor 
+
+  Second Level:
+    Navbar.jsx
+      This component is the only one that is visible on every page. It collects user login data and queries the server to display appropriate information
+      for the current user.
+
+      **** TODO ****
+      1) Logout button 
+      2) Secure login
+
+    RegistrationPage.jsx
+      This page contains the forms for collecting a new user's information. Once a user has submitted their information they are routed to the
+      appropriate for their user type.
+
+    DriverPage.jsx
+      This page contains form input to allow a driver to sign up to provide rides on specified days and times. It also contains a display to
+      show currently selected route as well as upcoming rides they are signed up for to display who has signed up to carpool with them on that
+      day.
+
+      **** TODO ****
+      1) Implement ability to toggle through upcoming rides
+      2) Implement ability to register for multiple day blocks in one submission
+
+    rider.jsx
+      This page contains the interface for riders to search for available carpool rides on a specified route on a selected day and time. It contains
+      displays for the route and the available carpools for their current selection.
+
+      **** TODO ****
+      1) Showing rides that are full as greyed out
+      2) Showing a message when there are no rides for the search query entered
+
+  Third Level:
+    Calendar.jsx
+      This calendar is made using a module found at http://react-day-picker.js.org/examples/
+      It sends back a date object whenever a day is clicked on inside the calendar.
+
+      **** TODO ****
+      1) Allow selection of time blocks with multiple days rather than singles
+      2) Implement ability to switch view between year view, month view, or weekly views
+
+    RideList.jsx
+      This is a stateless component that displays the results of the query showing every ride available as a button which when clicked will book 
+      the rider in that specific ride.
+
+      **** TODO ****
+      1) Implement better numbering system (currently renders based on search array index but this will have gaps if some search results are not
+        displayed due to being full)
+      2) Implement a dropdown showing details for a selected ride, which would contain a button to sign up for that ride
+      3) Implement a badge showing how many seats are available from the top view 
+
+    Map.jsx
+      This component renders a hard-coded map image from a collection we have pre-rendered based on all possible route permutations. The route prop
+      is passed based on an index calculated on the rider page.
+
+      **** TODO ****
+      1) Implement dynamic google map api calls for the map render instead of the pre-rendered images
+      2) Implement the ability to drop pins and show the closest pickup or dropoff point to that pin 
+      

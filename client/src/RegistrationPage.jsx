@@ -11,8 +11,7 @@ class RegistrationPage extends React.Component {
       work: 'Destination',
       seats: 'Seats Available',
       license: 'License Plate Number',
-      departureTime: '08:00:00',
-      displayTime: 'Time'
+      departureTime: 'Time',
     };
 
     //bind all functions to this context
@@ -22,8 +21,8 @@ class RegistrationPage extends React.Component {
     this.updateWork = this.updateWork.bind(this);
     this.updateSeats = this.updateSeats.bind(this);
     this.updateLicense = this.updateLicense.bind(this);
-    // this.updateDepartureTime = this.updateDepartureTime.bind(this);
-    this.updateDisplayTime = this.updateDisplayTime.bind(this);
+    this.updateDepartureTime = this.updateDepartureTime.bind(this);
+    // this.updateDisplayTime = this.updateDisplayTime.bind(this);
     this.registerDriver = this.registerDriver.bind(this);
     this.registerRider = this.registerRider.bind(this);
   }
@@ -64,11 +63,11 @@ class RegistrationPage extends React.Component {
     });
   }
 
-  updateDisplayTime(e) {
-    this.setState({
-      displayTime: e.target.innerHTML
-    });
-  }
+  // updateDisplayTime(e) {
+  //   this.setState({
+  //     displayTime: e.target.innerHTML
+  //   });
+  // }
 
   updateLicense(e) {
     this.setState({
@@ -77,14 +76,15 @@ class RegistrationPage extends React.Component {
   }
 
   // add more times in future development
-  // updateDepartureTime(e) {
-  //   this.setState({
-  //     departureTime: e.target.value
-  //   });
-  // }
+  updateDepartureTime(e) {
+    this.setState({
+      departureTime: e.target.innerHTML
+    });
+  }
 
   registerDriver() {
-    this.props.saveDriver(this.state.username, this.state.car, this.state.license, this.state.seats, this.state.home, this.state.work, this.state.departureTime);
+    var formattedTime = '0'+ this.state.departureTime + ':00';
+    this.props.saveDriver(this.state.username, this.state.car, this.state.license, this.state.seats, this.state.home, this.state.work, formattedTime);
     this.props.setUserPage('driver');
   }
 
@@ -139,10 +139,13 @@ class RegistrationPage extends React.Component {
             </span>
             <span className="dropdown">
               <button className="btn btn-outline-light dropdown-toggle" type="button" id="time" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {this.state.displayTime}
+              {this.state.departureTime}
               </button>
               <div className="dropdown-menu" aria-labelledby="dropdown-home">
-                <button onClick={this.updateDisplayTime} className="dropdown-item btn-outline-light" type="button">8:00 AM</button>
+                <button onClick={this.updateDepartureTime} className="dropdown-item btn-outline-light" type="button">7:00</button>
+                <button onClick={this.updateDepartureTime} className="dropdown-item btn-outline-light" type="button">7:30</button>
+                <button onClick={this.updateDepartureTime} className="dropdown-item btn-outline-light" type="button">8:00</button>
+                <button onClick={this.updateDepartureTime} className="dropdown-item btn-outline-light" type="button">8:30</button>
               </div>
             </span>
           </form>

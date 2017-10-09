@@ -10,8 +10,8 @@ class DriverPage extends React.Component {
     super(props);
     this.state = {
       username: '',
-      departureTime: '',
-      departureDate: 'Date'
+      departureDate: 'Date',
+      departureTime: ''
     };
     this.setDate = this.setDate.bind(this);
     // update driver time is a for a future integration
@@ -21,19 +21,14 @@ class DriverPage extends React.Component {
   }
 
   componentDidMount() {
+    let formattedTime = this.props.departureTime.slice(1, 5); 
     this.setState({
       username: this.props.username,
-      departureTime: this.props.departureTime
+      departureTime: formattedTime
     });
     console.log('component did mount', this.props.username);
     this.props.getRideSchedule(this.props.username);
   }
-
-  //update driver time on the driver page will be a future integration
-  // updateDriverTime(event) {
-  //   var time = event.target.innerHTML;
-  //   this.setState({departureTime: time});
-  // }
 
   setDate(selection) {
     var newDate = JSON.stringify(selection).slice(1, 11);
@@ -43,7 +38,6 @@ class DriverPage extends React.Component {
   }
 
   scheduleRide(event) {
-    //add this.props.departureTime for future integration
     event.preventDefault();
     alert('Schedule confirmed');
     this.props.postRideSchedule(this.props.username, this.state.departureDate);
@@ -65,7 +59,7 @@ class DriverPage extends React.Component {
         <Calendar setDate={this.setDate}/>
         <br />
         <h5>Your next scheduled ride:</h5>
-        <div className="departure-date">Date:  {this.props.departureDate + ' ' + '8:00 AM'}</div>
+        <div className="departure-date">Date:  {this.props.departureDate + ' at ' + this.state.departureTime + ' AM'}</div>
         <div className="pickup">Pickup Location:  {this.props.home}</div>
         <div className="destination">Destination:  {this.props.work}</div>
         <br/ >
@@ -81,20 +75,10 @@ class DriverPage extends React.Component {
 
 export default DriverPage;
 
-// <form onSubmit={this.scheduleRide}>
-//           <label>
-//           Date:
-//           <input type="text" value={this.state.value} placeholder={'yyyy-mm-dd'} onChange={this.updateDriverDate} />
-//           </label>
-//           <label>
-//           Time:
-//           <input type="text" value={this.state.departureTime} onChange={this.updateDriverTime} />
-//           </label>
-//           <input type="submit" value="Submit" />
-//         </form>
 
 
 //Google Maps background view via API request
 //rider list view rendered based on riders signed up
 //calendar schedule widget view
 //departure time/date => POST request to /driver to INSERT into rides DB
+

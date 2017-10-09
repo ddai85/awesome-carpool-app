@@ -5,14 +5,14 @@ class RegistrationPage extends React.Component {
     super(props);
     this.state = { 
 
-      username: '',
-      car: '',
-      home: '',
-      work: '',
-      seats: '',
-      license: '',
-      departureTime: '8:00:00'
-
+      username: 'Name',
+      car: 'Car Make/Model',
+      home: 'Pickup Location',
+      work: 'Destination',
+      seats: 'Seats Available',
+      license: 'License Plate Number',
+      departureTime: '08:00:00',
+      displayTime: 'Time'
     };
 
     //bind all functions to this context
@@ -22,7 +22,8 @@ class RegistrationPage extends React.Component {
     this.updateWork = this.updateWork.bind(this);
     this.updateSeats = this.updateSeats.bind(this);
     this.updateLicense = this.updateLicense.bind(this);
-    this.updateDepartureTime = this.updateDepartureTime.bind(this);
+    // this.updateDepartureTime = this.updateDepartureTime.bind(this);
+    this.updateDisplayTime = this.updateDisplayTime.bind(this);
     this.registerDriver = this.registerDriver.bind(this);
     this.registerRider = this.registerRider.bind(this);
   }
@@ -47,19 +48,25 @@ class RegistrationPage extends React.Component {
 
   updateHome(e) {
     this.setState({
-      home: e.target.value
+      home: e.target.innerHTML
     });
   }
 
   updateWork(e) {
     this.setState({
-      work: e.target.value
+      work: e.target.innerHTML
     });
   }
 
   updateSeats(e) {
     this.setState({
-      seats: e.target.value
+      seats: e.target.innerHTML
+    });
+  }
+
+  updateDisplayTime(e) {
+    this.setState({
+      displayTime: e.target.innerHTML
     });
   }
 
@@ -69,11 +76,12 @@ class RegistrationPage extends React.Component {
     });
   }
 
-  updateDepartureTime(e) {
-    this.setState({
-      departureTime: e.target.value
-    });
-  }
+  // add more times in future development
+  // updateDepartureTime(e) {
+  //   this.setState({
+  //     departureTime: e.target.value
+  //   });
+  // }
 
   registerDriver() {
     this.props.saveDriver(this.state.username, this.state.car, this.state.license, this.state.seats, this.state.home, this.state.work, this.state.departureTime);
@@ -87,31 +95,76 @@ class RegistrationPage extends React.Component {
   
   render () {
     return (<div>
-      <div>
-        <h3>Driver Registration</h3>
-        Name: <input onChange={this.updateUsername} value={this.state.username}></input>
-        <br />
-        Car: <input onChange={this.updateCar} value={this.state.car}></input>
-        <br />
-        Home: <input onChange={this.updateHome} value={this.state.home}></input>
-        <br />
-        Work: <input onChange={this.updateWork} value={this.state.work}></input>
-        <br />
-        Number of Seats: <input onChange={this.updateSeats} value={this.state.seats} ></input>
-        <br />
-        License Number: <input onChange={this.updateLicense} value={this.state.license}></input>
-        <br />
-        Departure Time: <input onChange={this.updatedDepartureTime} defaultValue={this.state.departureTime} ></input>
-        <button onClick={this.registerDriver} type="submit" name="driver">Register Driver</button>
-        <br />
-        <br />
-        <br />
-      </div>
-      <div>
-        <h3>Rider Registration</h3>
-        Name: <input onChange={this.updateUsername} value={this.state.username}></input>
-        <button onClick={this.registerRider} type="submit" name="rider">Register Rider</button>
-      </div>
+        <h3 className="header">Driver Registration</h3>
+        <nav className="navbar navbar-expand-lg navbar-transparent">
+          <form>
+            <span className="dropdown">
+              <button className="btn btn-outline-light dropdown-toggle" type="button" id="dropdown-time" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {this.state.username}
+              </button>
+            </span>
+
+            <span className="dropdown">
+              <button className="btn btn-outline-light dropdown-toggle" type="button" id="dropdown-home" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {this.state.home}
+              </button>
+              <div className="dropdown-menu" aria-labelledby="dropdown-home">
+                <button onClick={this.updateHome} className="dropdown-item btn-outline-light" type="button">Oakland</button>
+                <button onClick={this.updateHome} className="dropdown-item btn-outline-light" type="button">San Jose</button>
+              </div>
+            </span>
+
+            <span className="dropdown">
+              <button className="btn btn-outline-light dropdown-toggle" type="button" id="dropdown-destination" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {this.state.work}
+              </button>
+              <div className="dropdown-menu" aria-labelledby="dropdown-destination">
+                <button onClick={this.updateWork} className="dropdown-item btn-outline-light" type="button">Downtown</button>
+                <button onClick={this.updateWork} className="dropdown-item btn-outline-light" type="button">Hack Reactor</button>
+              </div>
+            </span>
+
+            <span className="dropdown">
+              <button className="btn btn-outline-light dropdown-toggle" type="button" id="seats" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {this.state.seats}
+              </button>
+              <div className="dropdown-menu" aria-labelledby="dropdown-home">
+                <button onClick={this.updateSeats} className="dropdown-item btn-outline-light" type="button">1</button>
+                <button onClick={this.updateSeats} className="dropdown-item btn-outline-light" type="button">2</button>
+                <button onClick={this.updateSeats} className="dropdown-item btn-outline-light" type="button">3</button>
+                <button onClick={this.updateSeats} className="dropdown-item btn-outline-light" type="button">4</button>
+                <button onClick={this.updateSeats} className="dropdown-item btn-outline-light" type="button">5</button>
+                <button onClick={this.updateSeats} className="dropdown-item btn-outline-light" type="button">6</button>
+              </div>
+            </span>
+            <span className="dropdown">
+              <button className="btn btn-outline-light dropdown-toggle" type="button" id="time" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {this.state.displayTime}
+              </button>
+              <div className="dropdown-menu" aria-labelledby="dropdown-home">
+                <button onClick={this.updateDisplayTime} className="dropdown-item btn-outline-light" type="button">8:00 AM</button>
+              </div>
+            </span>
+          </form>
+        </nav>
+        <nav className="navbar navbar-expand-lg navbar-transparent">
+          <form onClick={this.submit} className="form-inline">
+            <input onChange={this.updateCar} className="form-control mr-sm-2" type="text" placeholder="Car Make/Model" aria-label="car" name="car"></input>
+            <input onChange={this.updateLicense} className="form-control mr-sm-2" type="text" placeholder="License Plate Number" aria-label="license" name="license"></input>
+            <button onClick={this.registerDriver} className="btn btn-outline-light">Register Driver</button>
+          </form>
+        </nav>
+        <h3 className="header">Rider Registration</h3>
+        <nav className="navbar navbar-expand-lg navbar-transparent">
+          <form onClick={this.submit} className="form-inline">
+          <span className="dropdown">
+            <button className="btn btn-outline-light dropdown-toggle" type="button" id="dropdown-time" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {this.state.username}
+            </button>
+          </span>
+          <button onClick={this.registerRider} className="btn btn-outline-light">Register Rider</button>
+          </form>
+        </nav>
     </div>);
   }
 }

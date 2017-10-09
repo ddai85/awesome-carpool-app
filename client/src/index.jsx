@@ -30,9 +30,6 @@ class App extends React.Component {
 
     this.getLogin = this.getLogin.bind(this);
     this.renderRegistration = this.renderRegistration.bind(this);
-    this.handleTime = this.handleTime.bind(this);
-    this.handleStartPoint = this.handleStartPoint.bind(this);
-    this.handleEndPoint = this.handleEndPoint.bind(this);
     this.checkUser = this.checkUser.bind(this);
     this.setUserPage = this.setUserPage.bind(this);
     this.postRideSchedule = this.postRideSchedule.bind(this);
@@ -101,18 +98,6 @@ class App extends React.Component {
     } else if (type === 'rider') {
       this.setState({page: 'rider', rider: true});
     }
-  }
-
-  handleTime(e) {
-
-  }
-
-  handleStartPoint(e) {
-
-  }
-
-  handleEndPoint(e) {
-
   }
 
   saveDriver(username, car, license, seats, home, work, departureTime) {

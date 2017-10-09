@@ -1,26 +1,18 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var pools = require('../database/dbMethods');
+//post request handler for the /driver route
 
-var app = express();
+//get request handler for the /rides route
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
-app.use(express.static(__dirname + '/../client/dist'))
-app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
-app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'));
-app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
-app.use('/bin', express.static(__dirname + '/../client/bin'));
+//get request handler for the /rider route
 
-app.get('/driver', function (req, res) {
-  driver.selectAll(function(err, data) {
-    if(err) {
-      res.sendStatus(500);
-    } else {
-      res.json(data);
-    }
-  });
-});
+//post request handler for the /rider route
+
+//get request handler for the /registration route
+
+//post request handler for the /registration route
+
+//get request handler for the /login route
+
+
 
 app.post('/driver', function (req, res) {
   console.log('driver schedule posted', req.body);
@@ -62,8 +54,4 @@ app.post('/registration', function (req, res) {
   } else if(req.body.hasOwnProperty('rider')) {
     pools.registerRider(req.body, res);
   }
-});
-
-app.listen(3000, function() {
-  console.log('listening on port 3000!');
 });

@@ -12,7 +12,7 @@ class RiderPage extends React.Component {
       time: 'Time',
       pickup: 'Pickup Location',
       destination: 'Destination',
-      date: '2017-10-12',
+      date: 'Date',
       rides: []
     }
 
@@ -21,6 +21,26 @@ class RiderPage extends React.Component {
     this.setHome = this.setHome.bind(this);
     this.findRides = this.findRides.bind(this);
     this.setDate = this.setDate.bind(this);
+    this.bookRide = this.bookRide.bind(this);
+  }
+
+  bookRide(event) {
+    console.log(event.target);
+    var rideIndex = event.target.innerHTML.split(':')[0] - 1;
+    console.log(rideIndex);
+    $.ajax({
+      method: 'POST',
+      url: '/rider',
+      contentType: 'application/json',
+      data: JSON.stringify({rider: this.state.name, ride: this.state.rides[rideIndex]}),
+      success: (data) => {
+        console.log(data);
+        alert(`Your ride with ${this.state.rides[rideIndex].username} has been booked!`)
+      },
+      error: (err) => {
+        console.log('Error', err);
+      }
+    })
   }
 
   setDate(selection) {
@@ -108,7 +128,7 @@ class RiderPage extends React.Component {
           </form>
         </nav>
         <Calendar setDate={this.setDate}/>
-        <RideList rides={this.state.rides}/>
+        <RideList rides={this.state.rides} bookRide={this.bookRide}/>
       </div>
     )
   }

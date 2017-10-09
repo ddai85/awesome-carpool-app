@@ -138,6 +138,7 @@ var fetchUserData = (res, username) => {
 	});
 }
 
+// get list of rides matching user query
 var getRideList = (req, res) => {
 	const ridesQuery = `
 	SELECT 
@@ -163,9 +164,34 @@ var getRideList = (req, res) => {
 	});
 }
 
+// add a rider to a preexisting ride
+var addRider = (req, res) => {
+	var pos = 1;
+	var riderID = null;
+	for (var i = 0; i < 6; i++) {
+		if (req.body.ride[`rider${i + 1}`] !== null) {
+			pos++;
+		}
+	}
+	var idQuery = `
+	SELECT id from rider WHERE username = '${req.body.rider}'`;
+	connection.query(idQuery, (err, data) => {
+		var result = data[0];
+		var newRider = `
+		UPDATE rides SET rider${pos}=${result.id} WHERE driverName = '${req.body.ride.username}'`;
+		connection.query(newRider, (err, data) => {
+			if (err) throw err;
+			console.log('Inserted', req.body.rider, 'into position', pos);
+			res.send(data);
+			res.end();
+		});
+	});
+};
+
 module.exports.fetchUserData = fetchUserData;
 module.exports.registerDriver = registerDriver;
 module.exports.registerRider = registerRider;
 module.exports.registerDriverRide = registerDriverRide;
 module.exports.getDriverSchedule = getDriverSchedule;
 module.exports.getRideList = getRideList;
+module.exports.addRider = addRider;

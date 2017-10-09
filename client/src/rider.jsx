@@ -150,8 +150,12 @@ class RiderPage extends React.Component {
             <button onClick={this.findRides} className="btn btn-outline-light">Search</button>
           </form>
         </nav>
-        <Calendar setDate={this.setDate}/>
-        <Map route={this.state.route}/>
+        <div className="container-fluid">
+          <div className="row">
+            <Calendar setDate={this.setDate}/>
+            <Map route={this.state.route}/>
+          </div>
+        </div>
         <RideList rides={this.state.rides} bookRide={this.bookRide}/>
       </div>
     )

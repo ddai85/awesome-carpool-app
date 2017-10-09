@@ -91,13 +91,13 @@ INSERT INTO rider (username) VALUES ('kirk');
 
 
 INSERT INTO rides (driverID, driverName, rider1, rider2, rider3, departureDate) VALUES
-(5, 'rebeccaPhares', 1, 3, 5, '2017-10-10');
+(5, 'rebeccaPhares', 1, 3, '2017-10-10');
 INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
 (6, 'fredX', 2, '2017-10-10');
 INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
 (7, 'dannyT', 6, '2017-10-10');
 INSERT INTO rides (driverID, driverName, rider1, rider2, departureDate) VALUES
-(8, 'alan', 4, 7, '2017-10-10');
+(8, 'alan', 4, '2017-10-10');
 INSERT INTO rides (driverID, driverName, rider1, rider2, rider3, departureDate) VALUES
 (1, 'alex', 1, 3, 5, '2017-10-10');
 INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
@@ -105,9 +105,9 @@ INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
 INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
 (3, 'angel', 6, '2017-10-10');
 INSERT INTO rides (driverID, driverName, rider1, rider2, departureDate) VALUES
-(4, 'olaf', 4, 7, '2017-10-10');
+(4, 'olaf', 4, '2017-10-10');
 INSERT INTO rides (driverID, driverName, rider1, rider2, rider3, departureDate) VALUES
-(9, 'jonathanLee', 1, 3, 5, '2017-10-10');
+(9, 'jonathanLee', 1, 3, '2017-10-10');
 INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES
 (10, 'brianP', 2, '2017-10-10');
 INSERT INTO rides (driverID, driverName, rider1, departureDate) VALUES

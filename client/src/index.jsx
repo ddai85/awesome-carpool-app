@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
@@ -19,7 +20,7 @@ class App extends React.Component {
       home: '',
       work: '',
       departureDate: '',
-      departureTime: '08:00:00',
+      departureTime: '',
       car: '',
       seats: 0,
       upcomingRideDate: '',
@@ -40,7 +41,6 @@ class App extends React.Component {
   }
 
 
-
   renderRegistration () {
     this.setState({page: 'registration'});
   }
@@ -54,7 +54,6 @@ class App extends React.Component {
     } else {
     }
   }
-  
   
   checkUser() {
     $.ajax({
@@ -117,6 +116,7 @@ class App extends React.Component {
   }
 
   saveDriver(username, car, license, seats, home, work, departureTime) {
+    console.log(departureTime, 'save driver');
     var driverInfo = { driver: username, car: car, license: license, seats: seats, home: home, work: work, departureTime: departureTime };
     $.ajax({
       method: 'POST',
@@ -211,7 +211,6 @@ class App extends React.Component {
           : this.state.page === 'registration'
             ? <RegistrationPage saveDriver={this.saveDriver} saveRider={this.saveRider} username={this.state.username} setUserPage={this.setUserPage} />
             : this.state.page === 'driver'
-
               ? <DriverPage username={this.state.username} departureTime={this.state.departureTime} getRideSchedule={this.getRideSchedule} postRideSchedule={this.postRideSchedule} departureDate={this.state.departureDate} home={this.state.home} work={this.state.work} schedule={this.state.schedule} />
               : <RiderPage rider={this.state.username}/>
        }

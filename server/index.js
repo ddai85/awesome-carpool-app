@@ -42,7 +42,7 @@ app.get('/rider', function (req, res) {
 })
 
 app.post('/rider', function (req, res) {
-
+  pools.addRider(req, res);
 });
 
 app.get('/registration', function (req, res) {

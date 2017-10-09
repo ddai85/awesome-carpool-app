@@ -22,12 +22,12 @@ class Calendar extends React.Component {
   render() {
     const { selectedDay } = this.state;
     return (
-      <span>
+      <div className="col-sm-4">
         <DayPicker
           selectedDays={selectedDay}
           onDayClick={this.handleDayClick}
         />
-      </span>
+      </div>
     );
   }
 }
